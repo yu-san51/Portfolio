@@ -1,4 +1,4 @@
-![neko.jpg](app/assets/images/neko.jpg)
+![work_and_play](app/assets/images/work_and_play.jpg)
 
 
 ## 身近な先生～オンライン～
