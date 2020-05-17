@@ -1,24 +1,45 @@
-# README
+![work_and_play](app/assets/images/work_and_play.jpg)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# 身近な先生～オンライン～
+  こちらは手軽にオンラインで家庭教師を見つけられるマッチングサイトです。
+  期間や金額は各先生とご相談の上決定できます。
+  ピンポイントで知りたいことを質問したい、長期にわたって学習をサポートしてほしいなど、
+  手軽に個人に合った学習が可能です。
 
-* Ruby version
+## 概要
+  学習をサポートしてほしいけど、塾はいやだ。家に入られる家庭教師はちょっと…。ここだけわからないときは、どうしたらいいの？
+  など、様々な学習の困りごとを抱えている方と、
+  「教えることが好き！」「教える経験を積みたい！」、「今までの経験を活かしたい」などと考えている方のマッチングサイトです。
+  
+  * マッチング方法は生徒様側から先生の募集・スカウトを行い個人契約を結びます。
+  そのため期間や金額、教える内容や学習形式は先生と個別にご相談いただけます。ご納得いく条件で先生をご採用ください。
+  * 先生は登録していただくだけで、生徒様と直接個人契約できます。自ら募集をかけることも可能です。
+  特技や技術を学習意欲のある生徒様に伝えてみませんか？
+  
+## 使い方
+  * 生徒様
+    1. ログイン後、先生の募集・スカウト
+    2. 先生とチャットで条件の確認
+    3. 契約
+    4. 学習の開始
+   
+  * 先生
+    1. 先生として登録
+    2. 募集をかける、案件に応募する
+    3. オファーが来た生徒様とチャットで条件の確認
+    4. 契約
+    5. 学習の開始
 
-* System dependencies
+## テーマを選んだ理由
+  パソコンインストラクターとしての経験やチーム開発を通じて、ほかの人に自分知っていることを理解してもらう喜びを知り、教育に興味を持ちました。
+  分かってもらう喜びと、理解できた爽快感を得てほしくてこのテーマを選びました。
 
-* Configuration
+## 使用フレームワーク
+   Ruby on Rails (version 5.2.4.2)
 
-* Database creation
+## 機能一覧
+   https://docs.google.com/spreadsheets/d/1QvdoGrJm8AbhGVRRGfp-dBuMDv3CnAbEFxItAkFVZXA/edit?usp=sharing
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 設計書
+   
