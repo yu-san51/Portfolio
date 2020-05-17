@@ -27,7 +27,7 @@
   * 先生
     1. 先生として登録
     2. 募集をかける、案件に応募する
-    3. 生徒様とチャットで条件の確認
+    3. オファーが来た生徒様とチャットで条件の確認
     4. 契約
     5. 学習の開始
 
@@ -39,7 +39,7 @@
    Ruby on Rails (version 5.2.4.2)
 
 ## 機能一覧
-   https://docs.google.com/spreadsheets/d/1QvdoGrJm8AbhGVRRGfp-dBuMDv3CnAbEFxItAkFVZXA/edit?usp=sharing 
+   https://docs.google.com/spreadsheets/d/1QvdoGrJm8AbhGVRRGfp-dBuMDv3CnAbEFxItAkFVZXA/edit?usp=sharing
 
 ## 設計書
    
