@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_075231) do
+ActiveRecord::Schema.define(version: 2020_05_20_080309) do
+
+  create_table "items", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "prefer_sex", default: 0, null: false
+    t.integer "price", null: false
+    t.string "duration", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.boolean "is_active", default: true, null: false
+    t.boolean "is_continue", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
