@@ -1,0 +1,2 @@
+class ItemStyle < ApplicationRecord
+end
