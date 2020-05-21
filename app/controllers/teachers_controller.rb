@@ -8,6 +8,9 @@ class TeachersController < ApplicationController
   def update
   end
 
-  def deleted_at
+  def bye_bye
+  	
   end
+
+
 end
