@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3"><!--提案者紹介-->
+			<table class="table">
+				<tbody>
+					<tr>
+						<%= attachment_image_tag @item.user, :image_id, size:"100x100", fallback: "no_image.jpg" %>
+					</tr>
+					<tr>
+						<%= link_to "#{@item.user.name}", user_path(@item.user) %>
+						<span>  <%= @item.user.sex %></span>
+					</tr>
+					<tr>
+						フォローする！！
+					</tr>
+				</tbody>
+			</table>
+		</div><!--col-->
+
+		<div class="col-xs-9"><!--案件紹介-->
+			<table class="table">
+				<tbody>
+					<tr>
+						<%= @item.is_active %>
+					</tr>
+					<tr>
+						<%= @item.title %>
+					</tr>
+					<tr>
+						<td><%= @item.price %> + "円"</td>
+						<td><%= @item.is_continue %></td>
+					</tr>
+					<tr>
+						<%= simple_format(@item.body) %>
+					</tr>
+					<tr>
+						<td>希望する性別</td>
+						<td><%= @item.prefer_sex %></td>
+					</tr>
+					<tr>
+						<td>目安日数</td>
+						<td><%= @item.duration %></td>
+					</tr>
+
+					<% if @item.is_active == "受付中" %>
+						チャットで案件の交渉や、確認をしてみる
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div><!--row-->
+</div><!--container-->
