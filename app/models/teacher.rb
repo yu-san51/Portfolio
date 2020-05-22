@@ -1,2 +1,3 @@
 class Teacher < User
+	
 end
