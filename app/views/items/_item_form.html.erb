@@ -1,0 +1,35 @@
+
+<!--案件作成フォーム-->
+
+<%= form_for item do |f| %>
+
+	<%= f.label :title, "案件名" %><br />
+	<%= f.text_field :title, autofocus: true %><br />
+
+	<%= f.label :body, "案件内容" %><br />
+	<%= f.text_area :body, autofocus: true, placeholder: "具体的な教科や範囲、その他要望などを細かく書きましょう" %><br />
+
+	<%= f.label :price, "金額" %><br />
+	<%= f.text_field :price, autofocus: true %><br />
+
+	<p>案件種別</p>
+	<%= f.radio_button :is_continue, :継続案件 , checked: :true %>
+	<%= f.label :is_continue, "継続案件", {value: :true, style: "display: inline-block"} %>
+	<%= f.radio_button :is_continue, :単発案件 %>
+	<%= f.label :is_continue, "単発案件", {value: :false, style: "display: inline-block"} %><br />
+
+	<%= f.label :duration, "目安日数" %><br />
+	<%= f.text_field :duration, autofocus: true, placeholder: "日数や期間、時間などを自由にお書きください"%><br />
+
+	<%= f.label :prefer_sex, "ご希望性別" %><br />
+	<%= f.select :prefer_sex, Item.prefer_sexes.keys.to_a %><br />
+
+	<p>受付ステータス</p>
+	<%= f.radio_button :is_active, :受付中, checked: :true %>
+	<%= f.label :is_active, "受付中", {value: :true, style: "display: inline-block"} %>
+	<%= f.radio_button :is_active, :受付停止中 %>
+	<%= f.label :is_active, "受付停止中", {value: :false, style: "display: inline-block"} %><br />
+
+	<%= f.submit "この条件で案件を出す", class: "btn btn-default" %>
+
+<% end %>
