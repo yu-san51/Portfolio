@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :items, shallow: true do
   	resources :favorites, only: [:create, :destroy]
+    collection do
+      get "student"
+    end
   end
 
   resources :rooms, only: [:create]

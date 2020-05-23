@@ -4,7 +4,11 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = teacher.Items.all
+    @items = Item.teachers.page(params[:page]).per(10)
+  end
+
+  def student
+    @items = Item.students.page(params[:page]).per(10)
   end
 
   def show
