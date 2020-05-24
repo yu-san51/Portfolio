@@ -4,14 +4,10 @@
 			<table class="table">
 				<tbody>
 					<tr>
-						<%= attachment_image_tag @item.user, :image_id, size:"100x100", fallback: "no_image.jpg" %>
-					</tr>
-					<tr>
+						<%= attachment_image_tag @item.user, :image_id, size:"100x100", fallback: "no_image.jpg" %><br />
+
 						<%= link_to "#{@item.user.name}", user_path(@item.user) %>
 						<span>  <%= @item.user.sex %></span>
-					</tr>
-					<tr>
-						フォローする！！
 					</tr>
 				</tbody>
 			</table>
@@ -21,30 +17,40 @@
 			<table class="table">
 				<tbody>
 					<tr>
-						<%= @item.is_active %>
+						<td>
+							<%= @item.is_active %>
+						</td>
 					</tr>
 					<tr>
+						<td>
 						<%= @item.title %>
+						</td>
 					</tr>
 					<tr>
-						<td><%= @item.price %> + "円"</td>
-						<td><%= @item.is_continue %></td>
+						<td><%= @item.price %> 円　　　<span class= 'badge badge-primary'><%= @item.is_continue %></span></td>
 					</tr>
 					<tr>
-						<%= simple_format(@item.body) %>
+						<td>
+							<%= simple_format(@item.body) %>
+						</td>
 					</tr>
 					<tr>
-						<td>希望する性別</td>
-						<td><%= @item.prefer_sex %></td>
+						<td>希望する性別   <span class= 'badge badge-primary'><%= @item.prefer_sex %></span></td>
 					</tr>
 					<tr>
 						<td>目安日数</td>
 						<td><%= @item.duration %></td>
 					</tr>
-
-					<% if @item.is_active == "受付中" %>
-						チャットで案件の交渉や、確認をしてみる
-					<% end %>
+					<tr>
+						<td><span class= 'badge badge-primary'><%= @item.style.name %></span></td>
+					</tr>
+					<tr>
+						<td>
+							<% if @item.is_active == "受付中" %>
+								チャットで案件の交渉や、確認をしてみる
+							<% end %>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
