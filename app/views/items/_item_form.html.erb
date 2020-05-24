@@ -24,6 +24,16 @@
 	<%= f.label :prefer_sex, "ご希望性別" %><br />
 	<%= f.select :prefer_sex, Item.prefer_sexes.keys.to_a %><br />
 
+	<p>授業形態 (複数選択可)</p>
+	<%= f.collection_check_boxes(:style_ids, Style.all, :id, :name) do |style| %>
+        <div class='form-check'>
+            <%= f.label :style, class: 'form-check-label' do %>
+                <%= style.check_box class: 'form-check-input' %>
+                <%= style.text %>
+            <% end %>
+        </div>
+    <% end %>
+
 	<p>受付ステータス</p>
 	<%= f.radio_button :is_active, :受付中, checked: :true %>
 	<%= f.label :is_active, "受付中", {value: :true, style: "display: inline-block"} %>

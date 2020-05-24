@@ -4,7 +4,12 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.teachers.page(params[:page]).per(10)
+    #Item.find(1).teacher
+    #@items = Item.teachers.page(params[:page]).per(10)
+    #@items = Teacher.items.page(params[:page]).per(10)
+    #@items = Item.page(params[:page]).per(10)
+    @teachers = Teacher.all
+    #Items.join(:teacher).eager_load(:teacher).where(teachers: {type: "teacher"})
   end
 
   def student
@@ -60,7 +65,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:user_id, :prefer_sex, :duration, :price, :is_active, :is_continue, :title, :body)
+    params.require(:item).permit(:user_id, :prefer_sex, :duration, :price, :is_active, :is_continue, :title, :body, style_ids: [])
   end
 
 end

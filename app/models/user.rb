@@ -8,5 +8,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :contracts, dependent: :destroy
+  #has_many :teachers, dependent: :destroy
+  #has_many :students, dependent: :destroy
 
 end
