@@ -11,4 +11,7 @@ class User < ApplicationRecord
   #has_many :teachers, dependent: :destroy
   #has_many :students, dependent: :destroy
 
+  attachment :image
+
+  enum sex: {男性: true, 女性: false}
 end
