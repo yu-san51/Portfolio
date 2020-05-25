@@ -6,11 +6,17 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		
+		@user = User.find(params[:id])
 	end
 
 	def update
-		
+		user = User.find(params[:id])
+		if user.update(user_parmas)
+			redirect_to user_path(user.id)
+		else
+			@user = user
+			render :edit
+		end
 	end
 
 	def bye_bye
