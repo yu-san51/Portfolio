@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
 	def update
 		user = User.find(params[:id])
-		if user.update(user_parmas)
+		if user.update(user_params)
 			redirect_to user_path(user.id)
 		else
 			@user = user
@@ -19,8 +19,15 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def bye_bye
-		
+	def destroy   #paranoia destroy
+		@user = User.find(params[:id])
+		@user.destroy
+		redirect_to root_path
+	end
+
+	private
+	def user_params
+		params.require(params[:type]).permit(:image_id, :name, :email, :introduction)
 	end
 
 end

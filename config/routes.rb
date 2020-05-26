@@ -22,10 +22,9 @@ Rails.application.routes.draw do
   	end
   end
 
-  resources :users, only: [:show, :edit, :update], shallow: true do
+  resources :users, only: [:show, :edit, :update, :destroy], shallow: true do
     member do
       get "bye_confirm"
-      patch "bye_bye"
     end
   end
 
