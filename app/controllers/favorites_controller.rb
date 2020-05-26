@@ -7,9 +7,8 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-
-  	@item = Item.find(params[:item_id])
-  	favorite = current_user.favorites.find_by(item_id: @item.id)
+  	favorite = Favorite.find(params[:id]) #current_user.favorites.find_by(item_id: @item.id)
+  	@item = favorite.item
   	favorite.destroy
   end
 end
