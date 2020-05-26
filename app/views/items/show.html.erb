@@ -4,7 +4,7 @@
 			<table class="table">
 				<tbody>
 					<tr>
-						<%= attachment_image_tag @item.user, :image_id, size:"100x100", fallback: "no_image.jpg" %><br />
+						<%= attachment_image_tag @item.user, :image, size:"100x100", class: "img-circle pull-left profile-img", image_tag: ("no_image.jpg") %><br />
 
 						<%= link_to "#{@item.user.name}", user_path(@item.user) %>
 						<span>  <%= @item.user.sex %></span>
