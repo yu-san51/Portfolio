@@ -15,6 +15,7 @@
       </div>
 
       <div class="field">
+<<<<<<< HEAD
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -29,8 +30,11 @@
 
             <div class="field">
         <%= f.radio_button :sex, :true, checked: :true %>
+=======
+        <%= f.radio_button :sex, :男性, checked: :true %>
+>>>>>>> 984ab466b44e14dc9ee10e51264d8f633db70d52
         <%= f.label :sex, "男性", {value: :true, style: "display: inline-block;"} %>
-        <%= f.radio_button :sex, :false %>
+        <%= f.radio_button :sex, :女性 %>
         <%= f.label :sex, "女性", {value: :false, style: "display: inline-block;"} %>
       </div>
 

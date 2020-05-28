@@ -51,8 +51,9 @@
 							</div>
 						</td>
 						<td>
-							<% if @item.is_active == "受付中" %>
-								チャットで案件の交渉や、確認をしてみる
+							<!-- チャットルームを作る -->
+							<% if @item.is_active == "受付中" && @item.user != current_user %>
+								<%= link_to "チャットで条件の確認や交渉をする", item_rooms_path(@item.id), method: :post, class: "btn btn-success" %>
 							<% end %>
 						</td>
 					</tr>

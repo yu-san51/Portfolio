@@ -27,7 +27,20 @@ body {
   font: 400 87.5%/1.5em 'Open Sans', sans-serif;
 }
 
-/* Form Layout */
+/* ヘッダー */
+header {
+	color: white;
+	font-size: 18px;
+	font: 'Open Sans', sans-serif;
+}
+
+header .navbar-text {
+	font-size: 25px;
+}
+
+
+
+/* ログイン、新規登録フォーム */
 .form-wrapper {
   background: #fafafa;
   margin: 3em auto;
