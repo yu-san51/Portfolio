@@ -17,7 +17,10 @@
 			<%= form_for @message, remote: true do |f| %>
 				<div class="col-xs-offset2 col-xs-8">
 					<%= f.text_field :content, id: "text_field", class: "form-controll" %>
-					<% f.submit %>
+					<%#= f.hidden_field :room_id, :value => @room.id%>
+					<%#= f.hidden_field :sender, :value => current_user.id %>
+					<%#= f.hidden_field :reciever, :value => @room.item.user.id %>
+					<%= f.submit "送信" %>
 				</div>
 			<% end %>
 
