@@ -1,23 +1,22 @@
 
-			<!--item index-->
+	<!--item index-->
+	<% items.each do |item| %>
+		<% if item.is_active == "受付中" %>
+			<%= link_to item_path(item.id) do %>
+				<div class="item-field row">
+					<h4 class="text-center"><%= item.title %></h4>
+					<div class="col-xs-1-offset col-xs-3">
+						<%= attachment_image_tag item.user, :image, size:"180x180", fallback: "no_image.jpg" %><br />
+						<%= item.user.name %>
+					</div>
+					<div class="col-xs-3-offset col-xs-7">
+						<article>
+							<%= item.body.truncate(300) %>
+						</article>
+					</div>
+				</div><!--item-field-->
+			<% end %><!--link do-->
+		<% end %><!--if-->
+	<% end %><!--each-->
 
-			<% items.each do |item| %>
-				<% if item.is_active == "受付中" %>
-					<%= link_to item_path(item.id) do %>
-						<div class="item-field row">
-							<h4><%= item.title %></h4>
-							<div class="col-xs-1-offset col-xs-3">
-								<%#= attachment_image_tag item.user, :image, size:"80x80", fallback: "no_image.jpg" %><br />
-								<%= item.user.name %>
-							</div>
-							<div class="col-xs-1-offset col-xs-7">
-								<article>
-									<%= item.body.truncate(300) %>
-								</article>
-							</div>
-						</div><!--item-field-->
-					<% end %><!--link do-->
-				<% end %><!--if-->
-			<% end %><!--each-->
-
-			<%#= paginate @items %>
+	<%#= paginate @items %>
