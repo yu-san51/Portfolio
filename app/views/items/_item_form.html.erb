@@ -1,45 +1,72 @@
 
 <!--案件作成フォーム-->
+<div class="form-wrapper">
+	<div class="form-header">
+	</div>
+	<div class="form">
+		<%= form_for item do |f| %>
 
-<%= form_for item do |f| %>
+			<div class="field">
+				<%= f.label :title, "案件名", class: "field_title" %><br />
+				<%= f.text_field :title, autofocus: true, class: "field_input" %>
+			</div>
 
-	<%= f.label :title, "案件名" %><br />
-	<%= f.text_field :title, autofocus: true %><br />
+			<div class="field">
+				<%= f.label :body, "案件内容", class: "field_title" %><br />
+				<%= f.text_area :body, autofocus: true, placeholder: "具体的な教科や範囲、その他要望などを細かく書きましょう", class: "field_input" %>
+			</div>
 
-	<%= f.label :body, "案件内容" %><br />
-	<%= f.text_area :body, autofocus: true, placeholder: "具体的な教科や範囲、その他要望などを細かく書きましょう" %><br />
+			<div class="field">
+				<%= f.label :price, "金額", class: "field_title" %><br />
+				<%= f.text_field :price, autofocus: true, class: "field_input" %>
+			</div>
 
-	<%= f.label :price, "金額" %><br />
-	<%= f.text_field :price, autofocus: true %><br />
+			<div class="field">
+				<p class="field_title">案件種別</p>
+				<%= f.radio_button :is_continue, :継続案件 , checked: :true %>
+				<%= f.label :is_continue, "継続案件", {value: :true, style: "display: inline-block"} %>
+				<%= f.radio_button :is_continue, :単発案件 %>
+				<%= f.label :is_continue, "単発案件", {value: :false, style: "display: inline-block"} %>
+			</div>
 
-	<p>案件種別</p>
-	<%= f.radio_button :is_continue, :継続案件 , checked: :true %>
-	<%= f.label :is_continue, "継続案件", {value: :true, style: "display: inline-block"} %>
-	<%= f.radio_button :is_continue, :単発案件 %>
-	<%= f.label :is_continue, "単発案件", {value: :false, style: "display: inline-block"} %><br />
+			<div class="field">
+				<%= f.label :duration, "目安日数", class: "field_title" %><br />
+				<%= f.text_field :duration, autofocus: true, placeholder: "日数や期間、時間などを自由にお書きください", class: "field_input" %>
+			</div>
 
-	<%= f.label :duration, "目安日数" %><br />
-	<%= f.text_field :duration, autofocus: true, placeholder: "日数や期間、時間などを自由にお書きください"%><br />
+			<div class="field">
+				<%= f.label :prefer_sex, "ご希望性別", class: "field_title" %><br />
+				<%= f.select :prefer_sex, Item.prefer_sexes.keys.to_a %>
+			</div>
 
-	<%= f.label :prefer_sex, "ご希望性別" %><br />
-	<%= f.select :prefer_sex, Item.prefer_sexes.keys.to_a %><br />
+			<div class="field">
+				<p class="field_title">授業形態 (複数選択可)</p>
+				<%= f.collection_check_boxes(:style_ids, Style.all, :id, :name) do |style| %>
+			        <div class='form-check'>
+			            <%= f.label :style, class: 'form-check-label' do %>
+			                <%= style.check_box class: 'form-check-input' %>
+			                <%= style.text %>
+			            <% end %>
+			        </div>
+		  		<% end %>
+	   		 </div>
 
-	<p>授業形態 (複数選択可)</p>
-	<%= f.collection_check_boxes(:style_ids, Style.all, :id, :name) do |style| %>
-        <div class='form-check'>
-            <%= f.label :style, class: 'form-check-label' do %>
-                <%= style.check_box class: 'form-check-input' %>
-                <%= style.text %>
-            <% end %>
-        </div>
-    <% end %>
+			<div class="field">
+				<p class="field_title">受付ステータス</p>
+				<%= f.radio_button :is_active, :受付中, checked: :true %>
+				<%= f.label :is_active, "受付中", {value: :true, style: "display: inline-block"} %>
+				<%= f.radio_button :is_active, :受付停止中 %>
+				<%= f.label :is_active, "受付停止中", {value: :false, style: "display: inline-block"} %>
+			</div>
 
-	<p>受付ステータス</p>
-	<%= f.radio_button :is_active, :受付中, checked: :true %>
-	<%= f.label :is_active, "受付中", {value: :true, style: "display: inline-block"} %>
-	<%= f.radio_button :is_active, :受付停止中 %>
-	<%= f.label :is_active, "受付停止中", {value: :false, style: "display: inline-block"} %><br />
+			<div class="actions">
+				<%= f.submit "この条件で案件を出す", class: "button" %>
+			</div>
+		<% end %>
 
-	<%= f.submit "この条件で案件を出す", class: "btn btn-default" %>
+		<div class="form-footer">
 
-<% end %>
+		</div>
+
+	</div>
+</div>
