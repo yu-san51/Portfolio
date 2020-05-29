@@ -1,46 +1,80 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-offset-1 col-xs-10">
-			<div class="row">
-				<h3>あなたのページ</h3>
-				<div class="col-xs-4">
-					<%= attachment_image_tag @user, :image, size: "300x300", class: "img-circle pull-left profile-img", fallback:"no_image.jpg" %><br />
-					<span class= 'badge badge-primary'><%= @user.sex %></span><br />
-					<% if @user == current_user %>
-						<p><%= link_to "プロフィール編集", edit_user_path(@user.id), class: "pull-right"%></p>
-					<% end %>
-				</div><!--サイドバー-->
+			<% if @user === current_user %>
+				<h3 class="text-center">あなたのページ</h3>
+			<% end %>
 
-				<div class="col-xs-offset-1 col-xs-7">
-					<table>
-						<tbody>
-							<tr>
-								<td><%= @user.name %></td>
-							</tr>
-							<tr>
-								<td><%= simple_format(@user.introduction) %></td>
-							</tr>
-							<tr>
-								気になる案件（）
-							</tr>
-							<tr>
-								契約中案件
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<div class="flip">
+  				<div class="card">
+    				<div class="face front">
+      					<div class="details">
+        					<div><%= @user.name %></div>
+        					<hr>
 
+        					<% if @user == current_user %>
+        						<div class="role">契約中案件
+        						</div>
+        						<div class="contact">気になる案件（）
+        						</div>
+        						<div class="contact">自分の案件（）
+        						</div>
+	        					<div class="contact"><%= link_to "プロフィール編集", edit_user_path(@user.id)%>
+	        					</div>
 
+	        				<% else %><!--他人が見たマイページ-->
+        						<div class="role"><%= @user.sex %>
+        						</div>
+        						<div class="contact">
+        							ページの人の案件
+        						</div>
+	        					<div class="contact">
+	        					</div>
+
+	        				<% end %>
+
+	        				<div class="avatar">
+	        					<%= attachment_image_tag @user, :image, fallback:"no_image.jpg" %>
+	        				</div>
+	        			</div><!--deteal-->
+	        		</div><!--front-->
+
+	        		<div class="face back">
+	        			<div class="introduction">
+	        				<h3 class="introduction-text">自己紹介</h3>
+	        				<%= simple_format(@user.introduction) %>
+	        			</div>
+	        		</div><!--back-->
+	        	</div><!--card-->
+	        </div><!--flip-->
+
+	        <div class="actions turn">
+	        	<p class="button text-change">自己紹介文へ</p>
 			</div>
 
-			<div class="row text-center">
-				<h3>あなたの案件一覧</h3>
-				<%= render "items/item_index", items: @items %>
-			</div>
 
-			<div class="col-xs-offset-10 col-xs-2">
+	        <div class="col-xs-offset-10 col-xs-2">
 				<%= link_to "退会はこちらから", bye_confirm_user_path(current_user.id), class: "btn btn-default" %>
 			</div>
-		</div><!--col-->
-	</div><!--row-->
-</div><!--container-->
+
+			<script>
+				//$('.turn').click(function(){
+      				//$('.flip').find('.card').addClass('flipped').mouseleave(function(){
+         					//$(this).removeClass('flipped');
+      					//});
+					//return false;
+				//});
+
+				$('.turn').click(function(){
+					if($('.flip').find('.card').hasClass('flipped')){
+						$('.flip').find('.card').removeClass('flipped');
+						$('.text-change').html('自己紹介文へ');
+					}else{
+						$('.flip').find('.card').addClass('flipped');
+						$('.text-change').html('詳細へ');
+					}
+				});
+			</script>
+		</div>
+	</div>
+</div>
