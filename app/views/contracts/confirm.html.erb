@@ -1,7 +1,28 @@
 <div class="container">
 	<div class="row">
-		<div class="col-">
-			<h3>契約確認ページ</h3>
+		<div class="col-col-xs-10">
+			<h3 class="text-center">契約確認ページ</h3>
+			<div class="form-wrapper">
+				<div class="form-header"></div>
+					<div class="form">
+
+					<%= render "contracts/contract_content", item: @item %>
+
+					<%= form_for(@contract, url: item_contracts_path) do |f| %>
+
+						<%= f.hidden_field :item_id, value: @item %>
+						<%= f.hidden_field :contract_price, value: @item.price %>
+						<%= f.hidden_field :is_status, :申請中 %>
+						<%#= f.hidden_field_tag :contractor, @item.user.id %>
+						<div class="actions">
+							<%= f.submit "この条件で契約する", class: "button" %>
+						</div>
+					<% end %>
+
+					<div class="form-footer">
+					</div>
+				</div><!--form-->
+			</div><!--wrapper-->
 		</div><!--col-->
 	</div><!--row-->
 </div><!--container-->

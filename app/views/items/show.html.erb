@@ -50,13 +50,20 @@
 								<%= render "favorites/favorite", item: @item %>
 							</div>
 						</td>
+					</tr>
+
+					<% if @item.is_active == "受付中" && @item.user != current_user %>
+					<!-- チャットルームを作る/
+							契約画面へ -->
+					<tr>
 						<td>
-							<!-- チャットルームを作る -->
-							<% if @item.is_active == "受付中" && @item.user != current_user %>
-								<%= link_to "チャットで条件の確認や交渉をする", item_rooms_path(@item.id), method: :post, class: "btn btn-success" %>
-							<% end %>
+							<%= link_to "チャットで条件の確認や交渉をする", item_rooms_path(@item.id), method: :post, class: "btn btn-success" %>
+						</td>
+						<td>
+							<%= link_to "契約確認画面へ", confirm_item_contracts(@item.id), class: "btn btn-primary" %>
 						</td>
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
 		</div>
