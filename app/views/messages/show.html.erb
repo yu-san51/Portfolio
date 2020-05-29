@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-offset2 col-xs-8">
-			<h3><%= @room.item.title %>についての相談</h3>
+			<h3><%= @room.item.title %> についての相談</h3>
 
 			<% @messages.each do |msg| %>
 				<% if msg.user == current_user %>
@@ -17,9 +17,8 @@
 			<%= form_for @message, remote: true do |f| %>
 				<div class="col-xs-offset2 col-xs-8">
 					<%= f.text_field :content, id: "text_field", class: "form-controll" %>
-					<%#= f.hidden_field :room_id, :value => @room.id%>
-					<%#= f.hidden_field :sender, :value => current_user.id %>
-					<%#= f.hidden_field :reciever, :value => @room.item.user.id %>
+					<%= f.hidden_field :room_id, value: @room.id %>
+					<%= f.hidden_field :receiver, value: @room.item.user.id %>
 					<%= f.submit "送信" %>
 				</div>
 			<% end %>
