@@ -25,6 +25,7 @@ class User < ApplicationRecord
   acts_as_paranoid   #paranoia
 
   enum sex: {男性: true, 女性: false}
+  enum user_type: {teacher: 1, student: 2}
 
 
 

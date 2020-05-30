@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_041214) do
+ActiveRecord::Schema.define(version: 2020_05_30_055045) do
 
   create_table "contracts", force: :cascade do |t|
     t.integer "contractor", null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_041214) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.boolean "sex", default: true, null: false
-    t.string "type", null: false
+    t.integer "user_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"

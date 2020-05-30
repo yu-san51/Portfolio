@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def student
-    @items = Item.students.page(params[:page]).per(10)
+    #@items = Item.students.page(params[:page]).per(10)
   end
 
   def show
