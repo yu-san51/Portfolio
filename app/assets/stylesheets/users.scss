@@ -1,3 +1,93 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.flip {
+  -webkit-perspective: 800;
+   width: 600px;
+   height: 300px;
+   position: relative;
+   margin: 5% auto;
+}
+
+.flip .card.flipped {
+  -webkit-transform: rotatex(-180deg);
+}
+
+.flip .card {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 1.5s;
+}
+
+.flip .card .face {
+  border-radius:10px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+    font-size: 18px;
+    text-align: center;
+}
+
+.flip .card .front {
+  position: absolute;
+  background: #fafafa;
+}
+
+.flip .card .back {
+  -webkit-transform: rotatex(-180deg);
+    background: #fafafa;;
+}
+
+.details{
+ width:50%;
+ margin: 70px 0px 0px 40px;
+ float:left;
+ text-align:left;
+}
+
+.role{
+ padding-bottom:5px;
+}
+
+.contact{
+ padding-top:10px;
+ padding-bottom:10px;
+}
+
+.avatar{
+ float:right;
+ margin-top: 40px;
+ margin-right:40px;
+}
+
+.avatar img {
+  border-radius :15px;
+  height: 220px;
+  width: 200px;
+}
+
+.introduction {
+  margin-top:40px;
+  margin-left:5%;
+  width: 90%;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.introduction-text {
+  border-bottom: solid 0.7px;
+  margin-bottom: 15px;
+}
+
+.actions .button {
+  font-size: 2em;
+  line-height: 50px;
+  border-radius:10px;
+}
+
+.button:hover {
+  background: #ee3e52;
+}
