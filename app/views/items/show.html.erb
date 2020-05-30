@@ -60,7 +60,7 @@
 							<%= link_to "チャットで条件の確認や交渉をする", item_rooms_path(@item.id), method: :post, class: "btn btn-success" %>
 						</td>
 						<td>
-							<%= link_to "契約確認画面へ", confirm_item_contracts(@item.id), class: "btn btn-primary" %>
+							<%= link_to "契約確認画面へ", confirm_item_contracts_path(@item.id), class: "btn btn-primary" %>
 						</td>
 					</tr>
 					<% end %>

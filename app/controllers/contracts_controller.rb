@@ -1,5 +1,9 @@
 class ContractsController < ApplicationController
 
+  def confirm
+    @item = Item.find(params[:item_id])
+  end
+
   def new
     @item = Item.find(params[:item_id])
     @contract = Contract.new
@@ -28,6 +32,7 @@ class ContractsController < ApplicationController
   def deal
     
   end
+
 
   private
   def contract!(item_user)

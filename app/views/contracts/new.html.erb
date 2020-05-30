@@ -8,8 +8,8 @@
 
 					<%= render "contracts/contract_content", item: @item %>
 					<div class="field">
-						<p class="field_title">案件名</p>
-						<p class="field_show"><%= link_to "申請者", contract_path(contractor申請者.id) %></p>
+						<p class="field_title">申請者名</p>
+						<p class="field_show"><%#= link_to "申請者", user_path(contractor.id) %></p>
 					</div>
 
 
@@ -17,7 +17,7 @@
 
 						<%= f.hidden_field :item_id, value: @item %>
 						<%= f.hidden_field :contract_price, value: @item.price %>
-						<%= f.hidden_field :is_status, :履行中 %>
+						<%= f.hidden_field_tag :is_status, value: :履行中 %>
 						<%#= f.hidden_field_tag :contractor, @item.user.id %>
 						<div class="actions">
 							<%= f.submit "この条件で契約する", class: "button" %>

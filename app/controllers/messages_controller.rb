@@ -16,12 +16,13 @@ class MessagesController < ApplicationController
 	end
 
 	def create
-		@message = current_user.messages.new(message_params)
+		@message = Message.new(message_params)
+		@message.sender = current_user.id
 		@message.save
 	end
 
 	private
 	def message_params
-		params.require(:message).permit(:content, :sender, :receiver, :room_id)
+		params.require(:message).permit(:content, :receiver, :room_id)
 	end
 end
