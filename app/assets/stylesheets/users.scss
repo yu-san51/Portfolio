@@ -59,12 +59,14 @@
 
 .avatar{
  float:right;
- margin-top: 60px;
+ margin-top: 40px;
  margin-right:40px;
 }
 
 .avatar img {
   border-radius :15px;
+  height: 220px;
+  width: 200px;
 }
 
 .introduction {
@@ -81,17 +83,11 @@
 }
 
 .actions .button {
-  background: #f16272;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  height: 50px;
-  font-family: 'Open Sans', sans-serif;
   font-size: 2em;
   line-height: 50px;
-  letter-spacing: 0.05em;
-  text-align: center;
-  text-transform: uppercase;
-  transition: background 0.3s ease-in-out;
   border-radius:10px;
+}
+
+.button:hover {
+  background: #ee3e52;
 }
