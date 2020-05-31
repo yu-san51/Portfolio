@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_062833) do
+ActiveRecord::Schema.define(version: 2020_05_31_051629) do
 
   create_table "contracts", force: :cascade do |t|
-    t.integer "contractor", null: false
-    t.integer "contractee", null: false
+    t.integer "contractor_id", null: false
+    t.integer "contractee_id", null: false
     t.integer "item_id", null: false
     t.integer "is_status", default: 0, null: false
     t.integer "contract_price", null: false

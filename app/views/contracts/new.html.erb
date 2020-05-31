@@ -17,12 +17,11 @@
 
 						<%= f.hidden_field :item_id, value: @item.id %>
 						<%= f.hidden_field :contract_price, value: @item.price %>
-						<%= f.hidden_field :contractee, value: @item.user.id %>
+						<%= f.hidden_field :contractee_id, value: @item.user.id %>
 						<div class="actions">
 							<%= f.submit "この条件で契約する", class: "button" %>
 						</div>
 					<% end %>
-
 
 					<div class="form-footer">
 					</div>

@@ -13,10 +13,10 @@ class User < ApplicationRecord
   # has_many :receivers, through: :reverse_of_messages, source: :user
 
   has_many :contracts, dependent: :destroy
-  has_many :contractor_relationships, foreign_key: "contractor", class_name: "Contract", dependent: :destroy
-  has_many :contractors, through: :contractor_relationships
-  has_many :contractee_relationships, foreign_key: "contractee", class_name: "Contract", dependent: :destroy
-  has_many :contractees, through: :contractee_relationships
+  has_many :contractor_relationships, foreign_key: "contractor_id", class_name: "Contract", dependent: :destroy
+  has_many :contractor_id, through: :contractor_relationships
+  has_many :contractee_relationships, foreign_key: "contractee_id", class_name: "Contract", dependent: :destroy
+  has_many :contractee_id, through: :contractee_relationships
 
 
   attachment :image  #refile
