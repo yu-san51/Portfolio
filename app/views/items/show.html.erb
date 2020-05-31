@@ -52,7 +52,7 @@
 						</td>
 					</tr>
 
-					<% if @item.is_active == "受付中" && @item.user != current_user %>
+					<%# if @item.is_active == "受付中" && @item.user != current_user %>
 					<!-- チャットルームを作る/
 							契約画面へ -->
 					<tr>
@@ -63,7 +63,7 @@
 							<%= link_to "契約確認画面へ", confirm_item_contracts_path(@item.id), class: "btn btn-primary" %>
 						</td>
 					</tr>
-					<% end %>
+					<%# end %>
 				</tbody>
 			</table>
 		</div>
