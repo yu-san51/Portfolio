@@ -19,8 +19,6 @@ class User < ApplicationRecord
   has_many :contractees, through: :contractee_relationships
 
 
-  # has_many :teachers, dependent: :destroy
-  # has_many :students, dependent: :destroy
   attachment :image  #refile
   acts_as_paranoid   #paranoia
 

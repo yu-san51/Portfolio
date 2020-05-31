@@ -10,11 +10,10 @@ class ContractsController < ApplicationController
   end
 
   def create
-    user = Item.find(params[:item_id]).user_id
-    contractor = current_user.contract!(user)
-    contractor.save
     @contract = Contract.new(contract_params)
+    @contract.contractor = current_user.id
     @contract.save
+    item = Item.find(params[:contract][:item_id])
     redirect_to deal_contracts_path
   end
 
@@ -26,7 +25,7 @@ class ContractsController < ApplicationController
   end
 
   def show
-    @cocntract = Contract.find(params[:id])
+    @contract = Contract.find(params[:id])
   end
 
   def deal
@@ -35,15 +34,7 @@ class ContractsController < ApplicationController
 
 
   private
-  def contract!(item_user)
-    contractor_relationships.create!(contractor: item_user.id)
-  end
-
-  def uncontract!(item_user)
-    contractor_relationships.find_by(contractor: item_user.id).destroy
-  end
-
-  def contract_params
-    params.require(:contract).permit(:item_id, :contract_price)
-  end
+   def contract_params
+     params.require(:contract).permit(:item_id, :contract_price, :contractee)
+   end
 end

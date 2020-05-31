@@ -3,9 +3,7 @@
 		<div class="col-xs-offset-1 col-xs-10">
 			<h3>教えるComeon!!</h3>
 
-			<% @teachers.each do |teacher| %>
-				<%= render "items/item_index", items: teacher.items %>
-			<% end %>
+				<%= render "items/item_index", items: @items %>
 			
 		</div><!--col-->
 	</div><!--row-->

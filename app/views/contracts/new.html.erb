@@ -15,10 +15,9 @@
 
 					<%= form_for(@contract, url: item_contracts_path) do |f| %>
 
-						<%= f.hidden_field :item_id, value: @item %>
+						<%= f.hidden_field :item_id, value: @item.id %>
 						<%= f.hidden_field :contract_price, value: @item.price %>
-						<%= f.hidden_field_tag :is_status, value: :履行中 %>
-						<%#= f.hidden_field_tag :contractor, @item.user.id %>
+						<%= f.hidden_field :contractee, value: @item.user.id %>
 						<div class="actions">
 							<%= f.submit "この条件で契約する", class: "button" %>
 						</div>
