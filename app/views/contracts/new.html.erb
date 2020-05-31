@@ -1,7 +1,32 @@
 <div class="container">
 	<div class="row">
-		<div class="col-">
-			<h3>契約確定ページ</h3>
+		<div class="col-xs-offset-1 col-xs-10">
+			<h3 class="text-center">契約の申請が届いております</h3>
+			<div class="form-wrapper">
+				<div class="form-header"></div>
+					<div class="form">
+
+					<%= render "contracts/contract_content", item: @item %>
+					<div class="field">
+						<p class="field_title">申請者名</p>
+						<p class="field_show"><%#= link_to "申請者", user_path(contractor.id) %></p>
+					</div>
+
+
+					<%= form_for(@contract, url: item_contracts_path) do |f| %>
+
+						<%= f.hidden_field :item_id, value: @item.id %>
+						<%= f.hidden_field :contract_price, value: @item.price %>
+						<%= f.hidden_field :contractee_id, value: @item.user.id %>
+						<div class="actions">
+							<%= f.submit "この条件で契約する", class: "button" %>
+						</div>
+					<% end %>
+
+					<div class="form-footer">
+					</div>
+				</div><!--form-->
+			</div><!--wrapper-->
 		</div><!--col-->
 	</div><!--row-->
 </div><!--container-->

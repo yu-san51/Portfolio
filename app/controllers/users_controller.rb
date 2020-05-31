@@ -27,8 +27,7 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		key = (params.keys & ["student", "teacher"])[0]
-		params.require(key).permit(:image_id, :name, :email, :introduction)
+		params.require(:user).permit(:image_id, :name, :email, :introduction)
 	end
 
 end

@@ -4,15 +4,11 @@ class ItemsController < ApplicationController
 
 
   def index
-    #@items = Item.teachers.page(params[:page]).per(10)
-    #@items = Teacher.items.page(params[:page]).per(10)
-    @teachers = Teacher.all
-    #@items = Items.join(:teacher).eager_load(:teacher).where(teachers: {type: "teacher"})
-    #@items = Item.all.is_a?(teacher)
+    @items = Item.all
   end
 
   def student
-    @items = Item.students.page(params[:page]).per(10)
+    #@items = Item.students.page(params[:page]).per(10)
   end
 
   def show

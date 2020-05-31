@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_041214) do
+ActiveRecord::Schema.define(version: 2020_05_31_051629) do
 
   create_table "contracts", force: :cascade do |t|
-    t.integer "contractor", null: false
-    t.integer "contractee", null: false
+    t.integer "contractor_id", null: false
+    t.integer "contractee_id", null: false
     t.integer "item_id", null: false
     t.integer "is_status", default: 0, null: false
     t.integer "contract_price", null: false
@@ -50,12 +50,13 @@ ActiveRecord::Schema.define(version: 2020_05_26_041214) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "sender", null: false
-    t.integer "receiver", null: false
-    t.integer "room_id", null: false
-    t.text "content", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.integer "room_id"
+    t.text "content"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -78,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_041214) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.boolean "sex", default: true, null: false
-    t.string "type", null: false
+    t.integer "user_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"
