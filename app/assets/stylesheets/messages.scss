@@ -1,3 +1,89 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.message_name {
+	font-weight: bold;
+	text-align: center;
+    top: -10px;
+	position: relative;
+}
+
+.balloon {
+	width: 100%;
+}
+
+.serif-left {
+	position: relative;
+	display: inline-block;
+	width: 80%;
+	padding: 20px 30px 20px 15px;
+	margin: 40px 0 0 45px;
+	border-radius: 10px;
+ 	background: #fcefde;
+ 	opacity: 0.8;
+}
+
+.serif-left:after {
+	content: "";
+	position: absolute;
+	top: 15px;
+	left: -22px;
+	border-top: 10px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+ 	border-right: 20px solid #fcefde;
+	opacity: 0.9;
+}
+
+.serif-left p {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+
+.icon-left {
+	float: left;
+	width: 100px;
+	margin-left: 10px;
+}
+
+.icon-left img{
+	width: 100%;
+	border-radius: 50%;
+	background-size:cover;
+}
+
+.message_input {
+	margin-top: 40px;
+	border: 1px sorid #f5f5f5;
+	border-radius:5px;
+	font-size: 14px;
+	width: 80%;
+}
+
+.message_actions {
+  margin-top: 40px;
+  width: 20%;
+}
+
+.message_actions .message_button {
+  background: #f16272;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  height: 25px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width: 20%;
+}
+
+.message_button:hover {
+  background: #ee3e52;
+}

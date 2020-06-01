@@ -1,29 +1,41 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-offset2 col-xs-8">
-			<h3><%= @room.item.title %> についての相談</h3>
-			<div class="message">
-				<% @messages.each do |msg| %>
-					<% if msg.receiver_id == current_user %>
-						<p style="text-align: right;"><%= msg.content %></p>
-					<% else %>
-						<p style="text-align: left;"><%= msg.content %></p>
-					<% end %>
-				<% end %><!--each-->
-			</div>
+			<div class="form-wrapper">
+				<div class="form-header">
+					<h3 class="text-center"><%= @room.item.title %> についての相談</h3>
+					<p class="text-center">案件に対しての質問や、条件の交渉にお使いください。</p>
+				</div>
+
+				<div class="message">
+					<% @messages.each do |msg| %>
+						<div class="icon-left">
+							<%#= attachment_image_tag msg.sender_id.user, :image, fallback: "no_image.jpg" %>
+							<div class="message_name">
+								<%#= msg.sender_id.name %>
+							</div>
+						</div>
+						<div class="balloon">
+	     					<div class="serif-left">
+								<p>
+									<%= msg.content %>
+								</p>
+							</div>
+						</div>
+					<% end %><!--each-->
+				</div>
 
 			<!-- message投稿フォーム -->
-
-			<%= form_with model: @message, data: {remote: true} do |f| %>
-				<div class="col-xs-offset2 col-xs-8">
-					<%= f.text_field :content, id: "text_field", class: "form-controll" %>
+				<%= form_with model: @message, data: {remote: true} do |f| %>
+					<%= f.text_field :content, id: "text_field", class: "form-controll message_input" %>
 					<%= f.hidden_field :room_id, value: @room.id %>
-					<%= f.hidden_field :receiver_id, value: @room.item.user.id %>
-					<%= f.submit "送信" %>
+					<div class="message_actions">
+						<%= f.submit "送信", class: "message_button" %>
+					</div>
+				<% end %>
+
+
+				<div class="form-footer">
 				</div>
-			<% end %>
-
-
-		</div><!--col-->
+			</div>
 	</div><!--row-->
 </div><!--container-->
