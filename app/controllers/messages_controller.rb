@@ -1,8 +1,11 @@
 class MessagesController < ApplicationController
 
 	def show
+    	unless @room = Room.find_by(item_id: params[:id])
+      		@room = Room.new(item_id: params[:id])
+      		@room.save
+    	end
 		@message = Message.new
-		@room = Room.find(params[:id])
 		@messages = @room.messages.all
 	end
 
@@ -14,6 +17,6 @@ class MessagesController < ApplicationController
 
 	private
 	def message_params
-		params.require(:message).permit(:content, :receiver_id, :room_id)
+		params.require(:message).permit(:content, :room_id)
 	end
 end

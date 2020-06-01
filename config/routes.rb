@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :items, shallow: true do
   	resources :favorites, only: [:create, :destroy]
-    resources :rooms, only: [:create]
+    # resources :rooms, only: [:show]
     collection do
       get "student"
     end
@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :messages, only: [:show, :create]
+  get "message/:id" => "messages#show", as: "message"
+  resources :messages, only: [:create]
 
   resources :users, only: [:show, :edit, :update, :destroy], shallow: true do
     member do
