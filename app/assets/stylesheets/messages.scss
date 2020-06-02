@@ -2,17 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.message-wrapper {
+	width: 650px;
+	background: #fafafa;
+  	margin: 3em auto;
+  	padding: 0 1em;
+}
 
+.message {
+	height: 110px;
+}
+
+.icon-left {
+	float: left;
+	width: 70px;
+	margin-left: 30px;
+}
+
+.icon-left img{
+	width: 100%;
+	border-radius: 50%;
+	background-size:cover;
+}
 
 .message_name {
 	font-weight: bold;
 	text-align: center;
-    top: -10px;
+    top: 10px;
 	position: relative;
 }
 
 .balloon {
-	width: 100%;
+	float: right;
+	width: 80%;
 }
 
 .serif-left {
@@ -20,7 +42,7 @@
 	display: inline-block;
 	width: 80%;
 	padding: 20px 30px 20px 15px;
-	margin: 40px 0 0 45px;
+	margin: 20px 20px 0 45px;
 	border-radius: 10px;
  	background: #fcefde;
  	opacity: 0.8;
@@ -42,18 +64,6 @@
 	margin: 0;
 	padding: 0;
 	font-size: 14px;
-}
-
-.icon-left {
-	float: left;
-	width: 100px;
-	margin-left: 10px;
-}
-
-.icon-left img{
-	width: 100%;
-	border-radius: 50%;
-	background-size:cover;
 }
 
 .message_input {

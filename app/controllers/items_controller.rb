@@ -4,10 +4,11 @@ class ItemsController < ApplicationController
 
 
   def index
-    #if current_user == user.user_type.teacher
-      #@items = Item.user.where(user_type.student)
+    #if current_user == teacher
+      #@items = Item.user.where(user_type: "teacher").to_a
     #else
-      #@items = Item.where(user.user_type.teacher)
+     # users = User.where(user_type: "student")
+      #@items = users.items.all
     #end
     @items = Item.all
   end
