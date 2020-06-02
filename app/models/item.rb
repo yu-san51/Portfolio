@@ -1,8 +1,6 @@
 class Item < ApplicationRecord
 
     belongs_to :user
-	# belongs_to :teacher, class_name: 'User'
-	# belongs_to :student, class_name: 'User'
 	has_many :favorites, dependent: :destroy
 	has_many :contracts, dependent: :destroy
 	has_many :rooms, dependent: :destroy

@@ -4,11 +4,12 @@ class ItemsController < ApplicationController
 
 
   def index
+    #if current_user == user.user_type.teacher
+      #@items = Item.user.where(user_type.student)
+    #else
+      #@items = Item.where(user.user_type.teacher)
+    #end
     @items = Item.all
-  end
-
-  def student
-    #@items = Item.students.page(params[:page]).per(10)
   end
 
   def show

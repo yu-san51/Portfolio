@@ -43,7 +43,7 @@
 				<p class="field_title">授業形態 (複数選択可)</p>
 				<%= f.collection_check_boxes(:style_ids, Style.all, :id, :name) do |style| %>
 			        <div class='form-check'>
-			            <%= f.label :style, class: 'form-check-label' do %>
+			            <%= style.label class: 'form-check-label' do %>
 			                <%= style.check_box class: 'form-check-input' %>
 			                <%= style.text %>
 			            <% end %>
