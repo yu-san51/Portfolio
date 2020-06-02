@@ -28,9 +28,8 @@
 				<%= form_with model: @message, data: {remote: true} do |f| %>
 					<%= f.text_field :content, id: "text_field", class: "form-controll message_input" %>
 					<%= f.hidden_field :room_id, value: @room.id %>
-					<div class="message_actions">
-						<%= f.submit "送信", class: "message_button" %>
-					</div>
+
+					<%= f.submit "送信", class: "message_button" %>
 				<% end %>
 
 

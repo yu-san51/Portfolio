@@ -42,7 +42,11 @@
 						<td><%= @item.duration %></td>
 					</tr>
 					<tr>
-						<td><span class= 'badge badge-primary'><%= @item.style.name %></span></td>
+						<td><% @item.styles.each do |style| %>
+							<span class= 'badge badge-primary'><%= style.name %></span>
+							<% end %>
+						</td>
+
 					</tr>
 					<tr>
 						<td><!--気になる案件-->

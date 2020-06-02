@@ -59,29 +59,26 @@
 .message_input {
 	margin-top: 40px;
 	border: 1px sorid #f5f5f5;
-	border-radius:5px;
+	border-radius: 5px;
 	font-size: 14px;
-	width: 80%;
+	width: 79%;
 }
 
-.message_actions {
-  margin-top: 40px;
-  width: 20%;
-}
-
-.message_actions .message_button {
-  background: #f16272;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  height: 25px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2em;
-  letter-spacing: 0.05em;
-  text-align: center;
-  text-transform: uppercase;
-  transition: background 0.3s ease-in-out;
-  width: 20%;
+.message_button {
+	margin-top: 40px;
+	background: #f16272;
+	border: none;
+	border-radius:5px;
+	color: #fff;
+	cursor: pointer;
+	height: 27px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2em;
+	letter-spacing: 0.05em;
+	text-align: center;
+	text-transform: uppercase;
+	transition: background 0.3s ease-in-out;
+	width: 20%;
 }
 
 .message_button:hover {

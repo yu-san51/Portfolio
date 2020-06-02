@@ -6,10 +6,6 @@ Rails.application.routes.draw do
 
   resources :items, shallow: true do
   	resources :favorites, only: [:create, :destroy]
-    # resources :rooms, only: [:show]
-    collection do
-      get "student"
-    end
     resources :contracts, except: [:destroy, :index, :edit], shallow: true do
       collection do
         get "confirm"
