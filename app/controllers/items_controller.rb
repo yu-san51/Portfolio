@@ -2,15 +2,12 @@ class ItemsController < ApplicationController
 
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-
   def index
-    #if current_user == teacher
-      #@items = Item.user.where(user_type: "teacher").to_a
-    #else
-     # users = User.where(user_type: "student")
-      #@items = users.items.all
-    #end
-    @items = Item.all
+    if current_user.user_type == 'teacher'
+      @items = Item.joins(:user).where(users: {user_type: 'student'})
+    else
+      @items = Item.joins(:user).where(users: {user_type: 'teacher'})
+    end
   end
 
   def show
