@@ -47,27 +47,32 @@
 							<% end %>
 						</td>
 					</tr>
-					<tr>
-						<td><!--気になる案件-->
-							<div id="favorites_buttons_<%= @item.id %>">
-								<%= render "favorites/favorite", item: @item %>
-							</div>
-						</td>
-					</tr>
 
-					<!-- チャットルームを作る/	契約画面へ -->
-					<% if @item.is_active == "受付中" %>
-					<tr>
-						<td>
-							<%= link_to "コメント", message_path(@item.id), class: "btn btn-success" %>
-						</td>
+					<% if user_signed_in? %>
 						<% if @item.user != current_user %>
-							<td>
-								<%= link_to "契約確認画面へ", confirm_item_contracts_path(@item.id), class: "btn btn-primary" %>
-							</td>
+							<tr>
+								<td><!--気になる案件-->
+									<div id="favorites_buttons_<%= @item.id %>">
+										<%= render "favorites/favorite", item: @item %>
+									</div>
+								</td>
+							</tr>
 						<% end %>
-					</tr>
-					<% end %>
+
+						<!-- チャットルームを作る/	契約画面へ -->
+						<% if @item.is_active == "受付中" %>
+							<tr>
+								<td>
+									<%= link_to "コメント", message_path(@item.id), class: "btn btn-success" %>
+								</td>
+								<% if @item.user != current_user %>
+									<td>
+										<%= link_to "契約確認画面へ", confirm_item_contracts_path(@item.id), class: "btn btn-primary" %>
+									</td>
+								<% end %>
+							</tr>
+						<% end %>  <!--受付中？-->
+					<% end %><!--sign in?-->
 				</tbody>
 			</table>
 		</div>
