@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :items, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :item_favorites, through: :favorites, source: :item
 
   has_many :messages, dependent: :destroy, foreign_key: "sender_id"
 

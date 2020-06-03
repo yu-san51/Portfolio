@@ -49,6 +49,10 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def favorites  #uesr気になる案件一覧ページ
+    @items = current_user.item_favorites.includes(:user)
+  end
+
   def correct_user
     item = Item.find(params[:id])
     if current_user != item.user
