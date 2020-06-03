@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
+	before_action :authenticate_user!, except: [:show, :items]
+
 	def show
 		@user = User.find(params[:id])
-		@items = @user.items.all
 	end
 
 	def edit
@@ -23,6 +24,11 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@user.destroy
 		redirect_to root_path
+	end
+
+	def items
+		@user = User.find(params[:id])
+		@items = @user.items
 	end
 
 	private

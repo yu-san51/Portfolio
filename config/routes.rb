@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :items, shallow: true do
   	resources :favorites, only: [:create, :destroy]
+      collection do
+        get "favorites"
+      end
     resources :contracts, except: [:destroy, :index, :edit], shallow: true do
       collection do
         get "confirm"
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy], shallow: true do
     member do
       get "bye_confirm"
+      get "items"
     end
   end
 

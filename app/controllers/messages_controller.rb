@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-
+	before_action :authenticate_user!
+	
 	def show
     	unless @room = Room.find_by(item_id: params[:id])
       		@room = Room.new(item_id: params[:id])
