@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     unless user_signed_in?
-      @items = Item.all
+      @items = Item.all.page(params[:page]).reverse_order
     else
       if current_user.user_type == 'teacher'
         @items = Item.joins(:user).where(users: {user_type: 'student'})
