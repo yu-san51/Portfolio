@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       collection do
         get "favorites"
       end
-    resources :contracts, except: [:destroy, :index, :edit], shallow: true do
+    resources :contracts, except: [:index, :edit], shallow: true do
       collection do
         get "confirm"
         get "deal"

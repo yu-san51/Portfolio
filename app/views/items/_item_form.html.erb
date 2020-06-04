@@ -5,6 +5,7 @@
 	</div>
 	<div class="form">
 		<%= form_for item do |f| %>
+			<%= render 'layouts/error_messages', model: f.object %>
 
 			<div class="field">
 				<%= f.label :title, "案件名", class: "field_title" %><br />

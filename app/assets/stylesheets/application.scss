@@ -91,6 +91,18 @@ h1 {
   width: 100%;
 }
 
+.field_content {
+  background: #fafafa;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5em;
+  height: 150px;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
 .field_show {
   background: #fafafa;
   border: none;
@@ -104,6 +116,11 @@ h1 {
 }
 
 .field_input:focus {
+  border-bottom: 2px solid #c0c0c0;
+  outline: none;
+}
+
+.field_content:focus {
   border-bottom: 2px solid #c0c0c0;
   outline: none;
 }
