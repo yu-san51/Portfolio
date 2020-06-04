@@ -13,16 +13,18 @@
 					</div>
 
 
-					<%= form_for(@contract, url: contract_path(@contract.id)) do |f| %>
+				<%#= form_for(@contract, url: contract_path(@contract.id)) do |f| %>
 
-						<%= f.hidden_field :is_contractee_status, value: '履行中' %>
-						<div class="actions">
-							<%= f.submit "この条件で契約する", class: "button" %>
+						<%#= hidden_field_tag :contractee_status, "履行中" %>
+						<%#= hidden_field_tag :contractor_status, "進行中" %>
+					<div class="actions">
+							<%#= f.submit "この条件で契約する", class: "button" %>
+						<%= link_to "この条件で契約する", contract_path(@contract.id), method: :patch, class: "button" %>
 						</div>
-					<% end %>
+					<%# end %>
 
 					<div class="actions">
-						<%= link_to "契約しない", contract_path, method: :delete, class: "button" %>
+						<%= link_to "契約しない", contract_path(@contract.id), method: :delete, class: "button" %>
 					</div>
 
 					<div class="form-footer">

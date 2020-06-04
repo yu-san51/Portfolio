@@ -2,7 +2,7 @@ class ContractsController < ApplicationController
     before_action :authenticate_user!
     
   def confirm
-    @contract = Contract.find(item_id: params[:item_id])
+    @contract = Contract.find_by(item_id: params[:item_id])
     @item = @contract.item
   end
 
@@ -16,13 +16,14 @@ class ContractsController < ApplicationController
     @contract.contractor_id = current_user.id
     @contract.save
     item = Item.find(params[:contract][:item_id])
+    item.destroy
     redirect_to deal_item_contracts_path
   end
 
   def update
-    contract = Contract.find(params[:id])
-    contract.update(contract_params)
-    redirect_to deal_item_contracts_path
+    @contract = Contract.find(params[:id])
+    @contract.update(contractor_status: '進行中')
+    redirect_to user_path(current_user.id)
   end
 
   def destroy
@@ -42,6 +43,10 @@ class ContractsController < ApplicationController
 
   private
    def contract_params
-     params.require(:contract).permit(:item_id, :contract_price, :contractee_id, :is_contractor_status, :is_contractee_status)
+     params.require(:contract).permit(:item_id, :contract_price, :contractee_id)
+   end
+
+   def status_params
+     params.require(:contract).permit(:contractor_status, :contractee_status)
    end
 end
