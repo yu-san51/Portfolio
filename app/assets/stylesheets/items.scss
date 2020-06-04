@@ -64,6 +64,14 @@
   position: relative;
 }
 
+.card-media-showimg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+  float: left;
+  margin-top: -25px;
+  position: relative;
+  right: 14px;
+}
+
 .card-media-preview {
   background-color: #ebd983;
   border-radius: 50%;
@@ -104,6 +112,20 @@
   top: -10px;
 }
 
+.card-media-showtag {
+  border-radius: 2px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, .22);
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .4px;
+  padding: 5px 8px;
+  position: absolute;
+  left: 120px;
+  text-transform: uppercase;
+  top: -8px;
+}
+
 .card-media-tag-orange {
   background-color: #f16272;
   color: #fff;
@@ -124,7 +146,7 @@
 .card-body-heading {
   color: #6f6f6f;
   display: inline-block;
-  font-size: 20px;
+  font-size: 25px;
   margin-top: 3px;
 }
 
@@ -141,13 +163,17 @@
 .card-body-stars {
   margin: 12px 0;
   padding: 0;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .card-button {
   color: #9C948A;
   display: inline-block;
   font-weight: 500;
+  font-size: 15px;
   padding: 12px 20px;
+  margin-left: 30px;
   text-decoration: none;
   text-transform: uppercase;
   transition: all 200ms ease-out;
@@ -191,4 +217,58 @@
 .floating-action-button:hover {
   background-color: #ff2111;
   box-shadow: 0 0 6px rgba(0,0,0,.16), 0 6px 12px rgba(0,0,0,.32);
+}
+
+.show-wrapper {
+  background-color: #fafafa;
+  margin: 3em auto;
+  padding: 0 1em;
+  width: 700px;
+}
+
+.show-wrapper:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.user-sidebar {
+  width: 25%;
+  padding: 20px 10px;
+  float: left;
+}
+
+.show-name {
+  text-align: center;
+  font-size: 12px;
+  margin: 15px;
+}
+
+.item-show {
+  width: 65%;
+  margin: 20px 20px 20px 30px;
+  padding-left: 35px;
+  border-left: 1px solid gray;
+  float: left;
+}
+
+.lesson-field {
+  font-size: 15px;
+  background-color: #ede5d5;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.card-button-dta {
+  margin-left: 80px;
+  background-color: #f16272;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .15);
+  color: #fff;
+}
+
+.card-button-dta:hover {
+  box-shadow: 1px 5px 8px rgba(0, 0, 0, .18);
+  background-color: #ee3e52;
 }
