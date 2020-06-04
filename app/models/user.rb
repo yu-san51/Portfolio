@@ -20,6 +20,11 @@ class User < ApplicationRecord
   attachment :image  #refile
   acts_as_paranoid   #paranoia
 
+  validates :name, presence: true, length: {maximum: 50}
+  validates :sex, inclusion: {in: [true, false]}
+  validates :user_type, presence: true
+
+
   enum sex: {男性: true, 女性: false}
   enum user_type: {teacher: 1, student: 2}
 

@@ -57,6 +57,11 @@
 									</div>
 								</td>
 							</tr>
+						<% else %>
+							<tr>
+								<td><%= link_to "案件の修正", edit_item_path(@item.id), class:'btn btn-warning' %>
+								</td>
+							</tr>
 						<% end %>
 
 						<!-- チャットルームを作る/	契約画面へ -->

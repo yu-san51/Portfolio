@@ -11,6 +11,11 @@ class Item < ApplicationRecord
 	enum is_continue: {継続案件: true, 単発案件: false}
 	enum is_active: {受付中: true, 受付停止中: false}
 
+	validates :price, presence:true, numericality: { only_integer: true }
+	validates :duration, presence:true, length: {maximum: 100}
+	validates :title, presence:true, length: {maximum: 100}
+	validates :body, presence:true
+
 
 	#気になるしているかどうか
 	def favorited_by?(user)

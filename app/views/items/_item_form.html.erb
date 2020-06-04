@@ -13,12 +13,12 @@
 
 			<div class="field">
 				<%= f.label :body, "案件内容", class: "field_title" %><br />
-				<%= f.text_area :body, autofocus: true, placeholder: "具体的な教科や範囲、その他要望などを細かく書きましょう", class: "field_input" %>
+				<%= f.text_area :body, autofocus: true, placeholder: "具体的な教科や範囲、その他要望や金額に関しての補足などを細かく書きましょう", class: "field_input" %>
 			</div>
 
 			<div class="field">
 				<%= f.label :price, "金額", class: "field_title" %><br />
-				<%= f.text_field :price, autofocus: true, class: "field_input" %>
+				<%= f.text_field :price, autofocus: true, class: "field_input",placeholder: "数字のみ記入" %>
 			</div>
 
 			<div class="field">

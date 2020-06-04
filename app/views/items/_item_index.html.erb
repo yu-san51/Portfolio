@@ -2,7 +2,7 @@
 	<!--item index-->
 <div class="contents">
 	<% items.each do |item| %>
-		<% if item.is_active == "受付中" %>
+		<% if item.user == current_user || item.is_active == "受付中" %>
 			<div class="card u-clearfix">
 				<div class="card-media">
 					<div class="card-media-img">
@@ -27,7 +27,7 @@
     					</div>
     				</div>
     				<div class="card-body-stars u-clearfix">
-    					<%= item.body.truncate(300) %>
+    					<%= item.body.truncate(100) %>
   					</div>
     				<%= link_to "#{item.price} 円", item_path(item.id), class:"card-button card-button-cta" %>
     				<%= link_to item_path(item.id), class:"card-button card-button-link" do %>
