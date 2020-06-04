@@ -1,17 +1,12 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-offset-1 col-xs-10">
-			<h3 class="text-center">契約の申請が届いております</h3>
+		<div class="col-col-xs-10">
+			<h3 class="text-center">契約確認ページ</h3>
 			<div class="form-wrapper">
 				<div class="form-header"></div>
 					<div class="form">
 
 					<%= render "contracts/contract_content", item: @item %>
-					<div class="field">
-						<p class="field_title">申請者名</p>
-						<p class="field_show"><%#= link_to "申請者", user_path(contractor.id) %></p>
-					</div>
-
 
 					<%= form_for(@contract, url: item_contracts_path) do |f| %>
 

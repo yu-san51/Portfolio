@@ -1,8 +1,8 @@
 class ContractsController < ApplicationController
 
   def confirm
-    @item = Item.find(params[:item_id])
-    @contract = Contract.new
+    @contract = Contract.find(item_id: params[:item_id])
+    @item = @contract.item
   end
 
   def new
@@ -18,11 +18,16 @@ class ContractsController < ApplicationController
     redirect_to deal_item_contracts_path
   end
 
-  def edit
-    
+  def update
+    contract = Contract.find(params[:id])
+    contract.update(contract_params)
+    redirect_to deal_item_contracts_path
   end
 
-  def update
+  def destroy
+    contract = Contract.find(params[:id])
+    contract.destroy
+    redirect_to item_path(contract.item.id)
   end
 
   def show
@@ -36,6 +41,6 @@ class ContractsController < ApplicationController
 
   private
    def contract_params
-     params.require(:contract).permit(:item_id, :contract_price, :contractee_id)
+     params.require(:contract).permit(:item_id, :contract_price, :contractee_id, :is_contractor_status, :is_contractee_status)
    end
 end
