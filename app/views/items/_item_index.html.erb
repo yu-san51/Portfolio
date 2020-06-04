@@ -1,22 +1,42 @@
 
 	<!--item index-->
+<div class="contents">
 	<% items.each do |item| %>
-		<% if item.is_active == "受付中" %>
-			<%= link_to item_path(item.id) do %>
-				<div class="item-field row">
-					<h4 class="text-center"><%= item.title %></h4>
-					<div class="col-xs-1-offset col-xs-3">
-						<%= attachment_image_tag item.user, :image, size:"180x180", fallback: "no_image.jpg" %><br />
-						<%= item.user.name %>
+		<% if item.user == current_user || item.is_active == "受付中" %>
+			<div class="card u-clearfix">
+				<div class="card-media">
+					<div class="card-media-img">
+						<%= attachment_image_tag item.user, :image, size:"100x135", fallback: "no_image.jpg" %>
 					</div>
-					<div class="col-xs-3-offset col-xs-7">
-						<article>
-							<%= item.body.truncate(300) %>
-						</article>
-					</div>
-				</div><!--item-field-->
-			<% end %><!--link do-->
+					<%= link_to user_path(item.user.id) do %>
+						<div class="card-media-preview u-flex-center"><i class="fas fa-user"></i></div>
+					<% end %>
+					<span class="card-media-tag card-media-tag-orange"><%= item.user.name %></span>
+				</div><!--card-media-->
+
+				<div class="card-body">
+  					<h2 class="card-body-heading"><%= item.title %></h2>
+  					<div class="card-body-options">
+    					<div class="card-body-option card-body-option-favorite">
+    						<!-- お気に入り -->
+    					</div>
+    					<div class="card-body-option card-body-option-share">
+    						<span class= 'badge badge-primary'>
+    						<%= item.is_continue %></span><!--単発継続-->
+    						<span class= 'badge badge-primary'><%= item.user.sex %></span>
+    					</div>
+    				</div>
+    				<div class="card-body-stars u-clearfix">
+    					<%= item.body.truncate(100) %>
+  					</div>
+    				<%= link_to "#{item.price} 円", item_path(item.id), class:"card-button card-button-cta" %>
+    				<%= link_to item_path(item.id), class:"card-button card-button-link" do %>
+    					<span class="card-button-icon">More info</span>
+    				<% end %>
+				</div><!--cardbody-->
+			</div><!--u-clearfix-->
 		<% end %><!--if-->
 	<% end %><!--each-->
 
 	<%#= paginate @items %>
+</div>

@@ -1,14 +1,17 @@
 class ItemsController < ApplicationController
-
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-
   def index
-    @items = Item.all
-  end
-
-  def student
-    #@items = Item.students.page(params[:page]).per(10)
+    unless user_signed_in?
+      @items = Item.all.page(params[:page]).reverse_order
+    else
+      if current_user.user_type == 'teacher'
+        @items = Item.joins(:user).where(users: {user_type: 'student'})
+      else
+        @items = Item.joins(:user).where(users: {user_type: 'teacher'})
+      end
+    end
   end
 
   def show
@@ -48,6 +51,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to items_path
+  end
+
+  def favorites  #uesr気になる案件一覧ページ
+    @items = current_user.item_favorites.includes(:user)
   end
 
   def correct_user

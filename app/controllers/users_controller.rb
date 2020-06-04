@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
+	before_action :authenticate_user!, except: [:show, :items]
+
 	def show
 		@user = User.find(params[:id])
-		@items = @user.items.all
 	end
 
 	def edit
@@ -25,9 +26,14 @@ class UsersController < ApplicationController
 		redirect_to root_path
 	end
 
+	def items
+		@user = User.find(params[:id])
+		@items = @user.items
+	end
+
 	private
 	def user_params
-		params.require(:user).permit(:image_id, :name, :email, :introduction)
+		params.require(:user).permit(:image, :name, :email, :introduction)
 	end
 
 end

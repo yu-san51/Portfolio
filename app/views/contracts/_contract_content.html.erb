@@ -34,6 +34,8 @@
 
 		<div class="field">
 			<p class="field_title">授業形態 (複数選択可)</p>
-			<p class="field_show"><%= item.style.name %></p>
+			<% item.styles.each do |style| %>
+				<p class="field_show"><%= style.name %></p>
+			<% end %>
 
 		</div>

@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
-
+    before_action :authenticate_user!
+    
   def confirm
     @contract = Contract.find(item_id: params[:item_id])
     @item = @contract.item

@@ -6,11 +6,9 @@ class User < ApplicationRecord
 
   has_many :items, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :item_favorites, through: :favorites, source: :item
 
-  has_many :messages, dependent: :destroy
-  # has_many :senders, through: :messages, source: :receiver
-  # has_many :reverse_of_messages, class_name: "Message", foreign_key: "receiver"
-  # has_many :receivers, through: :reverse_of_messages, source: :user
+  has_many :messages, dependent: :destroy, foreign_key: "sender_id"
 
   has_many :contracts, dependent: :destroy
   has_many :contractor_relationships, foreign_key: "contractor_id", class_name: "Contract", dependent: :destroy
@@ -21,6 +19,11 @@ class User < ApplicationRecord
 
   attachment :image  #refile
   acts_as_paranoid   #paranoia
+
+  validates :name, presence: true, length: {maximum: 50}
+  validates :sex, inclusion: {in: [true, false]}
+  validates :user_type, presence: true
+
 
   enum sex: {男性: true, 女性: false}
   enum user_type: {teacher: 1, student: 2}

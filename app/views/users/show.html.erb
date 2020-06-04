@@ -3,6 +3,8 @@
 		<div class="col-xs-offset-1 col-xs-10">
 			<% if @user === current_user %>
 				<h3 class="text-center">あなたのページ</h3>
+			<% else %>
+				<h3 class="text-center"><%= @user.name %>さんのページ</h3>
 			<% end %>
 
 			<div class="flip">
@@ -15,18 +17,17 @@
         					<% if @user == current_user %>
         						<div class="role">契約中案件
         						</div>
-        						<div class="contact">気になる案件（）
+        						<div class="contact"><%= link_to "気になる案件（#{current_user.favorites.count}）", favorites_items_path %>
         						</div>
-        						<div class="contact">自分の案件（）
+        						<div class="contact"><%= link_to "自分の案件（#{current_user.items.count}）", items_user_path(current_user.id) %>
         						</div>
-	        					<div class="contact"><%= link_to "プロフィール編集", edit_user_path(@user.id)%>
+	        					<div class="contact"><%= link_to "プロフィール編集", edit_user_path(current_user.id)%>
 	        					</div>
 
 	        				<% else %><!--他人が見たマイページ-->
         						<div class="role"><%= @user.sex %>
         						</div>
-        						<div class="contact">
-        							ページの人の案件
+        						<div class="contact"><%= link_to "#{@user.name}さんの案件一覧（#{@user.items.count}）", items_user_path(@user.id) %>
         						</div>
 	        					<div class="contact">
 	        					</div>
@@ -53,10 +54,11 @@
 	        	<p class="button text-change">自己紹介文へ</p>
 			</div>
 
-
-	        <div class="col-xs-offset-10 col-xs-2">
-				<%= link_to "退会はこちらから", bye_confirm_user_path(current_user.id), class: "btn btn-default" %>
-			</div>
+			<% if @user == current_user || user_signed_in? %>
+		        <div class="col-xs-offset-10 col-xs-2">
+					<%= link_to "退会はこちらから", bye_confirm_user_path(current_user.id), class: "btn btn-default" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

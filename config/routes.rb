@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       collection do
         get "favorites"
       end
-    resources :contracts, except: [:index, :edit], shallow: true do
+    resources :contracts, except: [:destroy, :index, :edit], shallow: true do
       collection do
         get "confirm"
         get "deal"
@@ -17,11 +17,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :messages, only: [:show, :create]
+  get "message/:id" => "messages#show", as: "message"
+  resources :messages, only: [:create]
 
   resources :users, only: [:show, :edit, :update, :destroy], shallow: true do
     member do
       get "bye_confirm"
+      get "items"
     end
   end
 
