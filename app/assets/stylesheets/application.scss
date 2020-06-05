@@ -31,6 +31,10 @@ body {
   }
 }
 
+.container {
+  margin-top: 20px;
+}
+
 /* ヘッダー */
 header {
 	color: white;
@@ -46,7 +50,9 @@ header .navbar-text {
 	font-size: 15px;
 }
 
-
+.navbar {
+  margin-bottom: 0;
+}
 
 /* ログイン、新規登録、フォーム */
 .form-wrapper {
