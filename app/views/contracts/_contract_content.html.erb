@@ -4,7 +4,12 @@
 
 		<div class="field">
 			<p class="field_title">案件製作者</p>
-			<p class="field_show"><%= item.user.name %></p>
+			<p class="field_show"><%= item.user.present? ? item.user.name : "退会済みユーザー" %></p>
+		</div>
+
+		<div class="field">
+			<p class="field_title">案件製作者e-mail</p>
+			<p class="field_show"><%= item.user.present? ? item.user.email : "退会済みユーザー" %></p>
 		</div>
 
 		<div class="field">

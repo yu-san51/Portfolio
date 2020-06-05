@@ -3,7 +3,7 @@ class ContractsController < ApplicationController
     
   def confirm
     @contract = Contract.find_by(item_id: params[:item_id])
-    @item = @contract.item
+    @item = @contract.id
   end
 
   def new

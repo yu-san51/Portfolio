@@ -9,11 +9,13 @@ Rails.application.routes.draw do
       collection do
         get "favorites"
       end
-    resources :contracts, except: [:index, :edit], shallow: true do
-      collection do
-        get "confirm"
-        get "deal"
-      end
+    resources :contracts, except: [:index,:edit,:update,:show,:destroy], shallow: true
+  end
+
+  resources :contracts,only:[:edit,:update,:show] do
+    member do
+      get "confirm"
+      get "deal"
     end
   end
 

@@ -2,7 +2,7 @@ class Item < ApplicationRecord
 
     belongs_to :user
 	has_many :favorites, dependent: :destroy
-	has_many :contracts, dependent: :destroy
+	has_many :contracts
 	has_many :rooms, dependent: :destroy
 	has_many :item_styles, dependent: :destroy
 	has_many :styles, through: :item_styles, dependent: :destroy
