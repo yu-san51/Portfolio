@@ -31,9 +31,6 @@ body {
   }
 }
 
-.container {
-  margin-top: 20px;
-}
 
 /* ヘッダー */
 header {
@@ -50,11 +47,13 @@ header .navbar-text {
 	font-size: 15px;
 }
 
-.navbar {
-  margin-bottom: 0;
-}
 
 /* ログイン、新規登録、フォーム */
+
+.container {
+  margin-top: 20px;
+}
+
 .form-wrapper {
   background: #fafafa;
   margin: 3em auto;
