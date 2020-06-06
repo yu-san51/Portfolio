@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-10">
+			<%= render 'layouts/notifications' %>
+			<h3 class="text-center">契約中案件一覧</h3>
+				<% @contracts.each do |contract| %>
+					<%= render "items/item_index", items: contract.items %>
+				<% end %>
+			
+		</div><!--col-->
+	</div><!--row-->
+</div><!--container-->

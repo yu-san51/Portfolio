@@ -2,12 +2,18 @@ class MessagesController < ApplicationController
 	before_action :authenticate_user!
 	
 	def show
-    	unless @room = Room.find_by(item_id: params[:id])
-      		@room = Room.new(item_id: params[:id])
-      		@room.save
-    	end
-		@message = Message.new
-		@messages = @room.messages.all
+		if Item.find(params[:id]).受付中?
+	    	unless @room = Room.find_by(item_id: params[:id])
+	      		@room = Room.new(item_id: params[:id])
+	      		@room.save
+	    	end
+			@message = Message.new
+			@messages = @room.messages.all
+		else
+			@item = Item.find(params[:id])
+			flash[:notice] = "受付中の案件のみ、コメントルームを使用できます。"
+			redirect_to items_path
+		end
 	end
 
 	def create

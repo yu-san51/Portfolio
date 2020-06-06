@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_022353) do
+ActiveRecord::Schema.define(version: 2020_06_06_093119) do
 
   create_table "contracts", force: :cascade do |t|
     t.integer "contractor_id", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_022353) do
     t.string "duration", null: false
     t.string "title", null: false
     t.text "body", null: false
-    t.boolean "is_active", default: true, null: false
+    t.integer "active_status", default: 0, null: false
     t.boolean "is_continue", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_022353) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.boolean "sex", default: true, null: false
+    t.integer "sex", default: 0, null: false
     t.integer "user_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

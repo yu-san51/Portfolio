@@ -2,7 +2,7 @@
 	<!--item index-->
 <div class="contents">
 	<% items.each do |item| %>
-		<% if item.user == current_user || item.is_active == "受付中" %>
+		<% if item.user == current_user || item.active_status == "受付中" %>
 			<div class="card u-clearfix">
 				<div class="card-media">
 					<div class="card-media-img">
@@ -38,5 +38,5 @@
 		<% end %><!--if-->
 	<% end %><!--each-->
 
-	<%#= paginate @items %>
+	<%= paginate @items %>
 </div>

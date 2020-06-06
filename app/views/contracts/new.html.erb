@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-col-xs-10">
+		<div class="col-xs-offset-1 col-xs-10">
 			<h3 class="text-center">契約確認ページ</h3>
 			<div class="form-wrapper">
 				<div class="form-header"></div>
@@ -14,7 +14,7 @@
 						<%= f.hidden_field :contract_price, value: @item.price %>
 						<%= f.hidden_field :contractee_id, value: @item.user.id %>
 						<div class="actions">
-							<%= f.submit "この条件で契約する", class: "button" %>
+							<%= f.submit "この条件で契約申請する", class: "button" %>
 						</div>
 					<% end %>
 

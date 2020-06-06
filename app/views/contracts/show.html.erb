@@ -1,8 +1,24 @@
 <div class="container">
 	<div class="row">
-		<div class="col-">
-			<h3>契約詳細ページ</h3>
-			<%= render "contracts/contract_content", item: @item %>
+		<div class="col-xs-offset-1 col-xs-10">
+			<h3 class="text-center">契約詳細ページ</h3>
+			<div class="form-wrapper">
+				<div class="form-header">
+					<p class="field_title">契約内容が終了したら、下部のボタンを押してください。</p>
+					<p class="field_title">両者の契約内容終了を以って、契約の満了となります。</p>
+				</div>
+
+				<div class="form">
+					<%= render "contracts/contract_content", item: @contract.item %>
+						<div class="actions">
+							<%= link_to '契約内容を終了しました', contract_path(@contract.id), method: :patch, class: 'card-button card-button-dta' %>
+						</div>
+
+					<div class="form-footer">
+					</div>
+
+				</div><!--form-->
+			</div><!--wrapper-->
 		</div><!--col-->
 	</div><!--row-->
 </div><!--container-->

@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-10">
+
+			<h3 class="text-center">お知らせ一覧</h3>
+			<table class="table">
+				<tbody> <!--申請したほう-->
+					<% @users.contractors.each do |contract| %>
+					<tr>
+						<td><%= contract.title %></td>
+						<% if contract.履行中? %>
+							<td>申請は承諾されました。
+							</td>
+						<% elsif contract.契約終了 %>
+							<td>契約は終了されました。詳細ページから終了ください。</td>
+						<% elsif contract.契約満了 %>
+							<td>契約は満了となりました。
+							</td>
+						<% elsif contract.契約キャンセル %>
+							<td>契約はキャンセルされました。他の案件に応募するか、ご自身で提案してください。</td>
+						<% end %>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="table"><!--提案者-->
+				<tbody>
+					<% @users.contractees.each do |contract| %>
+					<tr>
+						<td><%= contract.title %></td>
+						<% if contract.履行中? %>
+							<td>申請が届いております。リアクションしましょう。
+							</td>
+						<% elsif contract.契約終了 %>
+							<td>契約は終了されました。詳細ページから終了ください。</td>
+						<% elsif contract.契約満了 %>
+							<td>契約は満了となりました。
+							</td>
+						<% elsif contract.契約キャンセル %>
+							<td>契約はキャンセルしました。</td>
+						<% end %>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>

@@ -9,13 +9,14 @@ Rails.application.routes.draw do
       collection do
         get "favorites"
       end
-    resources :contracts, except: [:index,:edit,:update,:show,:destroy], shallow: true
+    resources :contracts, only: [:new, :create], shallow: true
   end
 
-  resources :contracts,only:[:edit,:update,:show] do
+  resources :contracts, only: [:edit, :update, :show, :index] do
     member do
       get "confirm"
       get "deal"
+      patch "cancel"
     end
   end
 
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     member do
       get "bye_confirm"
       get "items"
+      get "notice"
     end
   end
 

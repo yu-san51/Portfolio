@@ -1,5 +1,6 @@
 <div class="container">
 	<div class="row">
+		<%= render 'layouts/notifications' %>
 		<div class="show-wrapper">
 			<div class="user-sidebar "><!--提案者紹介-->
 				<%= link_to user_path(@item.user.id) do %>
@@ -19,7 +20,7 @@
 				<h2 class="card-body-heading"><%= @item.title %></h2>
 				<div class="card-body-options">
 					<div class="card-body-option card-body-option-share">
-						<span class= 'badge badge-primary'><%= @item.is_active %>
+						<span class= 'badge badge-primary'><%= @item.active_status %>
 						</span>
 						<span>
 							<% if user_signed_in? %>
@@ -62,10 +63,10 @@
 						<% end %>
 
 						<!-- チャットルームを作る/	契約画面へ -->
-						<% if @item.is_active == "受付中" %>
+						<% if @item.active_status == "受付中" %>
 							<%= link_to "コメント", message_path(@item.id), class: "card-button card-button-cta" %>
 							<% if @item.user != current_user %>
-								<%= link_to "契約確認画面へ", new_item_contract_path(@item.id), class: "card-button card-button-dta" %>
+								<%= link_to "契約申請画面へ", new_item_contract_path(@item.id), class: "card-button card-button-dta" %>
 							<% end %>
 						<% end %>  <!--受付中？-->
 					<% end %><!--sign in?-->
