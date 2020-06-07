@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def favorites  #uesr気になる案件一覧ページ
-    @items = current_user.item_favorites.includes(:user)
+    @items = current_user.item_favorites.includes(:user).page(params[:page]).reverse_order
   end
 
   def correct_user

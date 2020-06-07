@@ -6,7 +6,7 @@
 				<div class="form-header"></div>
 					<div class="form">
 
-					<%= render "contracts/contract_content", item: @contract.item %>
+					<%= render "contracts/contract_confirm", item: @contract.item %>
 					<div class="field">
 						<p class="field_title">申請者名</p>
 						<p class="field_show"><%= link_to "#{@contract.contractor.name}", user_path(@contract.contractor.id) %> さん</p>

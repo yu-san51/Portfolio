@@ -3,10 +3,30 @@
 		<div class="col-xs-offset-1 col-xs-10">
 			<%= render 'layouts/notifications' %>
 			<h3 class="text-center">契約中案件一覧</h3>
-				<% @contracts.each do |contract| %>
-					<%= render "items/item_index", items: contract.items %>
-				<% end %>
-			
+
+			<div class="row">
+				<div class="col-xs-5">
+					<h4 class="text-center">契約案件</h4>
+					<% if @contractor_contracts.count > 0 %>
+						<% @contractor_contracts.each do |contract| %>
+							<%= render 'contracts/contract_part_of_index', item: contract.item, contract: contract %>
+						<% end %>
+					<% else %>
+						<p class="text-center">申請をした契約はありません</p>
+					<% end %>
+				</div><!--col-5-->
+
+				<div class="col-xs-offset-2 col-xs-5">
+					<h4 class="text-center">請負案件</h4>
+					<% if @contractee_contracts.count > 0 %>
+						<% @contractee_contracts.each do |contract| %>
+							<%= render 'contracts/contract_part_of_index', item: contract.item, contract: contract %>
+						<% end %>
+					<% else %>
+						<p class="text-center">現在申請された契約はありません。</p>
+					<% end %>
+				</div><!--col-5-->
+			</div><!--row-->
 		</div><!--col-->
 	</div><!--row-->
 </div><!--container-->

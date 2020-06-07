@@ -5,41 +5,43 @@
 			<h3 class="text-center">お知らせ一覧</h3>
 			<table class="table">
 				<tbody> <!--申請したほう-->
-					<% @users.contractors.each do |contract| %>
+					<% @contractor_contracts.each do |contract| %>
 					<tr>
-						<td><%= contract.title %></td>
-						<% if contract.履行中? %>
-							<td>申請は承諾されました。
-							</td>
-						<% elsif contract.契約終了 %>
-							<td>契約は終了されました。詳細ページから終了ください。</td>
-						<% elsif contract.契約満了 %>
-							<td>契約は満了となりました。
-							</td>
-						<% elsif contract.契約キャンセル %>
-							<td>契約はキャンセルされました。他の案件に応募するか、ご自身で提案してください。</td>
-						<% end %>
+						<td><%= contract.item.title %></td>
+							<% if contract.contractor_status.fulfillment? %>
+								<td>申請は承諾されました。
+								</td>
+							<% elsif contract.contract_finish? %>
+								<td>契約は終了されました。詳細ページから終了ください。</td>
+							<% elsif contract.contract_end? %>
+								<td>契約は満了となりました。
+								</td>
+							<% elsif contract.contract_cancel? %>
+								<td>契約はキャンセルされました。他の案件に応募するか、ご自身で提案してください。</td>
+							<% end %>
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
 
 			<table class="table"><!--提案者-->
 				<tbody>
-					<% @users.contractees.each do |contract| %>
+					<% @contractee_contracts.each do |contract| %>
 					<tr>
-						<td><%= contract.title %></td>
-						<% if contract.履行中? %>
-							<td>申請が届いております。リアクションしましょう。
-							</td>
-						<% elsif contract.契約終了 %>
-							<td>契約は終了されました。詳細ページから終了ください。</td>
-						<% elsif contract.契約満了 %>
-							<td>契約は満了となりました。
-							</td>
-						<% elsif contract.契約キャンセル %>
-							<td>契約はキャンセルしました。</td>
-						<% end %>
+						<td><%= contract.item.title %></td>
+							<% if contract.contractor_status.fulfillment? %>
+								<td>申請が届いております。リアクションしましょう。
+								</td>
+							<% elsif contract.contract_finish? %>
+								<td>契約は終了されました。詳細ページから終了ください。</td>
+							<% elsif contract.contract_end? %>
+								<td>契約は満了となりました。
+								</td>
+							<% elsif contract.contract_cancel? %>
+								<td>契約はキャンセルしました。</td>
+							<% end %>
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
 

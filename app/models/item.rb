@@ -7,9 +7,9 @@ class Item < ApplicationRecord
 	has_many :item_styles, dependent: :destroy
 	has_many :styles, through: :item_styles, dependent: :destroy
 
-	enum prefer_sex: {どちらでも可: 0, 男性: 1, 女性: 2}
-	enum is_continue: {継続案件: true, 単発案件: false}
-	enum active_status: {受付中: 1, 受付停止中: 2, 契約済み: 3}
+	enum prefer_sex: {fine: 0, male: 1, female: 2}
+	enum is_continue: {continue: true, single: false}
+	enum active_status: {open: 1, close: 2, contracted: 3}
 
 	validates :price, presence:true, numericality: { only_integer: true }
 	validates :duration, presence:true, length: {maximum: 100}

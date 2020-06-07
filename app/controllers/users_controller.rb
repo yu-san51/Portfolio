@@ -28,7 +28,12 @@ class UsersController < ApplicationController
 
 	def items
 		@user = User.find(params[:id])
-		@items = @user.items
+		@items = @user.items.where.not(active_status: 'contracted').page(params[:page]).reverse_order
+	end
+
+	def notice
+		@contractor_contracts = Contract.where(contractor_id: current_user.id).page(params[:page]).reverse_order
+		@contractee_contracts = Contract.where(contractee_id: current_user.id).page(params[:page]).reverse_order
 	end
 
 	private

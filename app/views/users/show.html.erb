@@ -16,11 +16,13 @@
         					<hr>
 
         					<% if @user == current_user %>
-        						<div class="role"><%= link_to "契約中の案件", contracts_path %>
+        						<div class="role"><%= link_to "お知らせ", notice_user_path(@user.id) %>
         						</div>
-        						<div class="contact"><%= link_to "気になる案件（#{current_user.favorites.count}）", favorites_items_path %>
+        						<div class="contact"><%= link_to "契約中の案件", contracts_path %>
         						</div>
-        						<div class="contact"><%= link_to "自分の案件（#{current_user.items.count}）", items_user_path(current_user.id) %>
+        						<div class="contact"><%= link_to "気になる案件", favorites_items_path %>
+        						</div>
+        						<div class="contact"><%= link_to "自分の案件", items_user_path(current_user.id) %>
         						</div>
 	        					<div class="contact"><%= link_to "プロフィール編集", edit_user_path(current_user.id)%>
 	        					</div>
