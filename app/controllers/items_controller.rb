@@ -4,12 +4,12 @@ class ItemsController < ApplicationController
 
   def index
     unless user_signed_in?
-      @items = Item.all.page(params[:page]).reverse_order
+      @items = Item.page(params[:page]).reverse_order
     else
       if current_user.user_type == 'teacher'
-        @items = Item.joins(:user).where(users: {user_type: 'student'})
+        @items = Item.joins(:user).where(users: {user_type: 'student'}).page(params[:page]).reverse_order
       else
-        @items = Item.joins(:user).where(users: {user_type: 'teacher'})
+        @items = Item.joins(:user).where(users: {user_type: 'teacher'}).page(params[:page]).reverse_order
       end
     end
   end
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def favorites  #uesr気になる案件一覧ページ
-    @items = current_user.item_favorites.includes(:user)
+    @items = current_user.item_favorites.includes(:user).page(params[:page]).reverse_order
   end
 
   def correct_user
@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:user_id, :prefer_sex, :duration, :price, :is_active, :is_continue, :title, :body, style_ids: [])
+    params.require(:item).permit(:user_id, :prefer_sex, :duration, :price, :active_status, :is_continue, :title, :body, style_ids: [])
   end
 
 end

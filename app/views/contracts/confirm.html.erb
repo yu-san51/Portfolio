@@ -1,33 +1,25 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-offset-1 col-xs-10">
-			<h3 class="text-center">契約の申請が届いております</h3>
-			<div class="form-wrapper">
-				<div class="form-header"></div>
-					<div class="form">
+<div class='container'>
+	<div class='row'>
+		<div class='col-xs-offset-1 col-xs-10'>
+			<h3 class='text-center'>契約の申請が届いております</h3>
+			<div class='form-wrapper'>
+				<div class='form-header'></div>
+					<div class='form'>
 
-					<%= render "contracts/contract_content", item: @item %>
-					<div class="field">
-						<p class="field_title">申請者名</p>
-						<p class="field_show"><%= link_to "申請者", user_path(@contract.contractor.id) %></p>
+					<%= render 'contracts/contract_confirm', item: @contract.item %>
+					<div class='field'>
+						<p class='field_title'>申請者名</p>
+						<p class='field_show'><%= link_to "#{@contract.contractor.name}", user_path(@contract.contractor.id) %> さん</p>
 					</div>
 
-
-				<%#= form_for(@contract, url: contract_path(@contract.id)) do |f| %>
-
-						<%#= hidden_field_tag :contractee_status, "履行中" %>
-						<%#= hidden_field_tag :contractor_status, "進行中" %>
-					<div class="actions">
-							<%#= f.submit "この条件で契約する", class: "button" %>
-						<%= link_to "この条件で契約する", contract_path(@contract.id), method: :patch, class: "button" %>
-						</div>
-					<%# end %>
-
-					<div class="actions">
-						<%= link_to "契約しない", contract_path(@contract.id), method: :delete, class: "button" %>
+					<div class='actions'>
+						<%= link_to 'この条件で契約する', contract_path(@contract.id), method: :patch, class: 'card-button card-button-dta', 'data-confirm' => '本当に申請を受けますか？' %>
+					</div>
+					<div class='actions'>
+						<%= link_to '契約しない', cancel_contract_path(@contract.id), method: :patch, class: 'card-button card-button-cta', 'data-confirm' => '本当に契約を断りますか？' %>
 					</div>
 
-					<div class="form-footer">
+					<div class='form-footer'>
 					</div>
 				</div><!--form-->
 			</div><!--wrapper-->

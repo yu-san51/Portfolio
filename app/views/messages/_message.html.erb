@@ -1,0 +1,16 @@
+
+	<div class='message'>
+		<div class='icon-left'>
+			<%= attachment_image_tag message.sender, :image, fallback: 'no_image.jpg' %>
+			<div class='message_name'>
+				<%= message.sender.name %>
+			</div>
+		</div>
+		<div class='balloon'>
+				<div class='serif-left'>
+				<p>
+					<%= message.content %>
+				</p>
+			</div>
+		</div>
+	</div>

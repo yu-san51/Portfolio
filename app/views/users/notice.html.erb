@@ -1,0 +1,42 @@
+<div class='container'>
+	<div class='row'>
+		<div class='col-xs-offset-1 col-xs-10'>
+
+			<h3 class='text-center'>お知らせ一覧</h3>
+			<div class='notice-field'>
+				
+				<h4>申請案件</h4>
+				<table class=' table table-hover'>
+					<tbody> <!--申請したほう-->
+						<% @contractor_contracts.each do |contractor_contract| %>
+							<tr>
+								<td><%= contractor_contract.item.title %></td>
+								<td><%= @message %></td>
+								<% if contractor_contract.contractee_status == 'fulfillment' || contractor_contract.contractee_status == 'contract_finish' %>
+									<td><%= link_to '契約詳細へ', contract_path(contractor_contract.id), class: 'card-button card-button-cta'%></td>
+								<% end %>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+	
+				<h4>提案案件</h4>
+				<table class='table table-hover'><!--提案者-->
+					<tbody>
+						<% @contractee_contracts.each do |contractee_contract| %>
+						<tr>
+							<td><%= contractee_contract.item.title %></td>
+							<td><%= @contractee_message %></td>
+							<% if contractee_contract.contractor_status == 'spplying' %>
+								<td><%= link_to '契約 or キャンセル', confirm_contract_path(contractee_contract.id), class: 'card-button card-button-dta' %></td>
+							<% elsif contractee_contract.contractor_status == 'fulfillment' || contractee_contract.contractor_status == 'contract_finish' %>
+								<td><%= link_to '契約詳細へ', contract_path(contractee_contract.id), class: 'card-button card-button-cta' %></td>
+							<% end %>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

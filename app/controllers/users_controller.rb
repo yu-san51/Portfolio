@@ -28,7 +28,41 @@ class UsersController < ApplicationController
 
 	def items
 		@user = User.find(params[:id])
-		@items = @user.items
+		@items = @user.items.where.not(active_status: 'contracted').page(params[:page]).reverse_order
+	end
+
+	def notice
+		@contractor_contracts = Contract.where(contractor_id: current_user.id)
+		@contractor_contracts.each do |contractor_contract|
+			case contractor_contract.contractee_status
+			when 'standing'
+				@message = '申請中です。リアクションされるまでしばらくお待ちください。'
+			when 'fulfillment'
+				@message = '申請は承認されました。契約が終了したときは、詳細ページから終了ボタンを押してください。'
+			when 'contract_finish'
+				@message = '契約は終了されました。詳細ページから終了ください。'
+			when 'contract_end'
+				@message = '契約は満了となりました。'
+			when 'contract_cancel'
+				@message = '契約はキャンセルされました。他の案件に応募するか、ご自身で提案してください。'
+			end
+		end
+		@contractee_contracts = Contract.where(contractee_id: current_user.id)
+		@contractee_contracts.each do |contractee_contract|
+			case contractee_contract.contractor_status
+			when 'spplying'
+				@contractee_message = '申請が届いております。リアクションしましょう。'
+			when 'fulfillment'
+				@contractee_message = '契約が終了したときは、詳細ページから終了ボタンを押してください。'
+			when 'contract_finish'
+				@contractee_message = '契約は終了されました。詳細ページから終了ボタンを押してください。'
+			when 'contract_end'
+				@contractee_message = '契約は満了となりました。'
+			when 'contract_cancel'
+				@contractee_message = '契約をキャンセルしました。'
+			end
+		end
+
 	end
 
 	private

@@ -1,10 +1,13 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-offset-1 col-xs-10">
-			<h3 class="text-center">あなたの気になる案件一覧</h3>
-
-				<%= render "items/item_index", items: @items %>
-			
+<div class='container'>
+	<div class='row'>
+		<div class='col-xs-offset-1 col-xs-10'>
+			<h3 class='text-center'>あなたの気になる案件一覧</h3>
+			<% if @items.count > 0 %>
+				<%= render 'items/item_index', items: @items %>
+			<% else %>
+				<p class='text-center'>気になる案件はありません</p>
+				<p class='text-center'>案件詳細♥を押して、ブックマークしましょう。</p>
+			<% end %>
 		</div><!--col-->
 	</div><!--row-->
 </div><!--container-->

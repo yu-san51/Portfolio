@@ -1,15 +1,15 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-offset-1 col-xs-10　text-center">
-			<h3 class="text-center">退会確認ページ</h3>
+<div class='container'>
+	<div class='row'>
+		<div class='col-xs-offset-1 col-xs-10　text-center'>
+			<h3 class='text-center'>退会確認ページ</h3>
 
 			    <p>退会すると登録情報や<br>
   	   				これまでの案件履歴が閲覧できなくなります。<br>
   	   				退会する場合は、「退会する」をクリックしてください。</p>
 
-			  	<%= link_to "退会しない", user_path(current_user.id), class:"btn btn-success" %>
+			  	<%= link_to '退会しない', user_path(current_user.id), class:"btn btn-success" %>
 
-  	  			<%= link_to "退会する", user_path(current_user.id), method: :delete, class:"btn btn-warning btn-md" %>
+  	  			<%= link_to '退会する', user_path(current_user.id), method: :delete, class:"btn btn-warning btn-md" %>
 
 		</div><!--col-->
 	</div><!--row-->

@@ -1,8 +1,13 @@
-<div class="container">
-	<div class="row">
-		<div class="col-offset-1 col-xs-10">
-			<h1 class="text-center">契約完了です。</h1>
-			<h3 class="text-center">よいご契約となることを祈念しております！！</h3>
+<div class='container'>
+	<div class='row'>
+		<div class='col-offset-1 col-xs-10'>
+			<h1 class='text-center'>契約完了です。</h1>
+			<h3 class='text-center'><%= @contract.contractor.name %>さん：<%= @contract.contractor.email %><br />
+			までご連絡のうえ契約内容を履行ください。</h3>
+			<h3 class='text-center'>よいご契約となることを祈念しております！！</h3>
+		</div>
+		<div class='col-xs-offset-10 col-xs-2'>
+			<%= link_to 'マイページへ', user_path(current_user.id), class: 'btn btn-default' %>
 		</div>
 	</div>
 </div>
