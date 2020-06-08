@@ -1,11 +1,11 @@
 
 
 	<% flash.each do |key, value| %>
-		<div style="background: rgba(255,0,127,0.3);
+		<div style='background: rgba(255,0,127,0.3);
 		 color: #fff;
 		 padding: 10px;
 		 margin-bottom: 20px;
-		 text-align: center;">
+		 text-align: center;'>
 	  		<%= content_tag(:div, value, class: "#{key}") %>
 		</div>
 	<% end %>

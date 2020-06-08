@@ -8,12 +8,12 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :item_favorites, through: :favorites, source: :item
 
-  has_many :messages, dependent: :destroy, foreign_key: "sender_id"
+  has_many :messages, dependent: :destroy, foreign_key: 'sender_id'
 
   has_many :contracts
-  has_many :contractor_relationships, class_name: "Contract", foreign_key: "contractor_id"
+  has_many :contractor_relationships, class_name: 'Contract', foreign_key: 'contractor_id'
   has_many :contractors, through: :contractor_relationships
-  has_many :contractee_relationships, class_name: "Contract" ,foreign_key: "contractee_id"
+  has_many :contractee_relationships, class_name: 'Contract' ,foreign_key: 'contractee_id'
   has_many :contractees, through: :contractee_relationships
 
 

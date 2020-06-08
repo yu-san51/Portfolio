@@ -1,21 +1,21 @@
-<div class="container">
-	<div class="row">
-		<div class="message-wrapper">
-			<div class="form-header">
-				<h3 class="text-center"><%= @room.item.title %> についての相談</h3>
-				<p class="text-center">案件に対しての質問や、条件の交渉にお使いください。</p>
+<div class='container'>
+	<div class='row'>
+		<div class='message-wrapper'>
+			<div class='form-header'>
+				<h3 class='text-center'><%= @room.item.title %> についての相談</h3>
+				<p class='text-center'>案件に対しての質問や、条件の交渉にお使いください。</p>
 			</div>
-			<div class="new-message">
+			<div class='new-message'>
 				<% @messages.each do |msg| %>
-					<div class="message">
-						<div class="icon-left">
-							<%= attachment_image_tag msg.sender, :image, fallback: "no_image.jpg" %>
-							<div class="message_name">
+					<div class='message'>
+						<div class='icon-left'>
+							<%= attachment_image_tag msg.sender, :image, fallback: 'no_image.jpg' %>
+							<div class='message_name'>
 								<%= msg.sender.name %>
 							</div>
 						</div>
-						<div class="balloon">
-	     					<div class="serif-left">
+						<div class='balloon'>
+	     					<div class='serif-left'>
 								<p>
 									<%= msg.content %>
 								</p>
@@ -27,12 +27,12 @@
 
 			<!-- message投稿フォーム -->
 			<%= form_with model: @message, data: {remote: true} do |f| %>
-				<%= f.text_field :content, id: "text_field", class: "form-controll message_input" %>
+				<%= f.text_field :content, id: 'text_field', class: 'form-controll message_input' %>
 				<%= f.hidden_field :room_id, value: @room.id %>
 
-				<%= f.submit "送信", class: "message_button" %>
+				<%= f.submit '送信', class: 'message_button' %>
 			<% end %>
-			<div class="form-footer">
+			<div class='form-footer'>
 			</div>
 		</div>
 	</div><!--row-->

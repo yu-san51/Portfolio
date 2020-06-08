@@ -1,72 +1,72 @@
-<div class="container">
-	<div class="row">
+<div class='container'>
+	<div class='row'>
 		<%= render 'layouts/notifications' %>
-		<div class="show-wrapper">
-			<div class="user-sidebar "><!--提案者紹介-->
+		<div class='show-wrapper'>
+			<div class='user-sidebar'><!--提案者紹介-->
 				<%= link_to user_path(@item.user.id) do %>
-					<div class="card-media">
-						<div class=" card-media-showimg">
-							<%= attachment_image_tag @item.user, :image,size: "145x135", fallback: ("no_image.jpg") %>
+					<div class='card-media'>
+						<div class='card-media-showimg'>
+							<%= attachment_image_tag @item.user, :image,size: '145x135', fallback: ('no_image.jpg') %>
 						</div>
-						<span class="card-media-showtag card-media-tag-orange"><%= @item.user.sex %></span>
+						<span class='card-media-showtag card-media-tag-orange'><%= @item.user.sex %></span>
 					</div>
-					<div class="show-name">
+					<div class='show-name'>
 						<%= link_to "#{@item.user.name}", user_path(@item.user) %>
 					</div>
 				<% end %>
 			</div><!--sidebar-->
 
-			<div class="item-show"><!--案件紹介-->
-				<h2 class="card-body-heading"><%= @item.title %></h2>
-				<div class="card-body-options">
-					<div class="card-body-option card-body-option-share">
+			<div class='item-show'><!--案件紹介-->
+				<h2 class='card-body-heading'><%= @item.title %></h2>
+				<div class='card-body-options'>
+					<div class='card-body-option card-body-option-share'>
 						<span class= 'badge badge-primary'><%= @item.active_status %>
 						</span>
 						<span>
 							<% if user_signed_in? %>
 								<% if @item.user != current_user %>
-									<div id="favorites_buttons_<%= @item.id %>" style="display: inline-block; margin-left: 10px;">
-										<%= render "favorites/favorite", item: @item %>
+									<div id="favorites_buttons_<%= @item.id %>" style='display: inline-block; margin-left: 10px;'>
+										<%= render 'favorites/favorite', item: @item %>
 									</div>
 								<% end %>
 							<% end %>
 						</span>
 					</div>
 				</div>
-				<div class="card-body-stars u-clearfix">
+				<div class='card-body-stars u-clearfix'>
     				<%= simple_format(@item.body) %>
   				</div>
 
-  				<div class="lesson-field">
-	  				<div class="lesson-price">
+  				<div class='lesson-field'>
+	  				<div class='lesson-price'>
 	  					<p>金額：<%= @item.price %> 円　　<span class= 'badge badge-primary'><%= @item.is_continue %></span></p>
 	  				</div>
-	  				 <div class="lesson-duration">
+	  				 <div class='lesson-duration'>
 	  					<p>目安日数：<%= @item.duration %></p>
 	  				</div>
-	  				<div class="lesson-style">
+	  				<div class='lesson-style'>
 	  					<p>授業形態：
 	  					<% @item.styles.each do |style| %>
-							<span class= 'badge badge-primary', style=" margin-left: 10px;"><%= style.name %></span>
+							<span class= 'badge badge-primary', style=' margin-left: 10px;'><%= style.name %></span>
 							<% end %></p>
 	  				</div>
-	  				<div class="prefer-lesson-sex">
+	  				<div class='prefer-lesson-sex'>
 	  					<p>希望性別：<%= @item.prefer_sex %></p>
 	  				</div>
 				</div>
 
-				<div class="actions">
+				<div class='actions'>
 					<% if user_signed_in? %>
 						<% if @item.user == current_user %>
-							<%= link_to "案件の修正", edit_item_path(@item.id), class: "card-button card-button-cta" %>
-							<%= link_to "案件の削除", item_path(@item.id), method: :delete, class: "card-button card-button-dta"%>
+							<%= link_to '案件の修正', edit_item_path(@item.id), class: 'card-button card-button-cta' %>
+							<%= link_to '案件の削除', item_path(@item.id), method: :delete, class: 'card-button card-button-dta' %>
 						<% end %>
 
 						<!-- チャットルームを作る/	契約画面へ -->
-						<% if @item.active_status == "受付中" %>
-							<%= link_to "コメント", message_path(@item.id), class: "card-button card-button-cta" %>
+						<% if @item.active_status == 'open' %>
+							<%= link_to 'コメント', message_path(@item.id), class: 'card-button card-button-cta' %>
 							<% if @item.user != current_user %>
-								<%= link_to "契約申請画面へ", new_item_contract_path(@item.id), class: "card-button card-button-dta" %>
+								<%= link_to '契約申請画面へ', new_item_contract_path(@item.id), class: 'card-button card-button-dta' %>
 							<% end %>
 						<% end %>  <!--受付中？-->
 					<% end %><!--sign in?-->

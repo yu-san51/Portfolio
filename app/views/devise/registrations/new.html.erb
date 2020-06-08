@@ -1,53 +1,53 @@
-<div class="form-wrapper">
+<div class='form-wrapper'>
   <h1>新規登録</h1>
-  <div class="form">
+  <div class='form'>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render 'devise/shared/error_messages', resource: resource %>
 
-      <div class="field">
-        <%= f.label :名前, class: "field_title" %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "field_input" %>
+      <div class='field'>
+        <%= f.label :名前, class: 'field_title' %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'field_input' %>
       </div>
 
-      <div class="field">
-        <%= f.label :email, class: "field_title" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field_input" %>
+      <div class='field'>
+        <%= f.label :email, class: 'field_title' %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'field_input' %>
       </div>
 
-      <div class="field">
-        <%= f.label :password, class: "field_title" %>
+      <div class='field'>
+        <%= f.label :password, class: 'field_title' %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "field_input" %>
+        <%= f.password_field :password, autocomplete: 'new-password', class: 'field_input' %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation, class: "field_title" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field_input" %>
+      <div class='field'>
+        <%= f.label :password_confirmation, class: 'field_title' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'field_input' %>
       </div>
 
-      <div class="field">
-        <%= f.radio_button :sex, :男性, checked: :true %>
-        <%= f.label :sex, "男性", {value: :true, style: "display: inline-block;"} %>
-        <%= f.radio_button :sex, :女性 %>
-        <%= f.label :sex, "女性", {value: :false, style: "display: inline-block;"} %>
+      <div class='field'>
+        <%= f.radio_button :sex, :man, checked: :true %>
+        <%= f.label :sex, '男性', {value: :man, style: 'display: inline-block;'} %>
+        <%= f.radio_button :sex, :woman %>
+        <%= f.label :sex, '女性', {value: :woman, style: 'display: inline-block;'} %>
       </div>
 
-      <div class="field">
+      <div class='field'>
         <%= f.radio_button :user_type, :teacher, checked: :true %>
-        <%= f.label :user_type, "先生として登録", {value: :teacher, style: "display: inline-block;"} %>
+        <%= f.label :user_type, '先生として登録', {value: :teacher, style: 'display: inline-block;'} %>
         <%= f.radio_button :user_type, :student %>
-        <%= f.label :user_type, "生徒として登録", {value: :student, style: "display: inline-block;"} %>
+        <%= f.label :user_type, '生徒として登録', {value: :student, style: 'display: inline-block;'} %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up", class:"button" %>
+      <div class='actions'>
+        <%= f.submit 'Sign up', class: 'button' %>
       </div>
     <% end %>
   </div>
 
-  <div class="form-footer">
-    <%= render "devise/shared/links" %>
+  <div class='form-footer'>
+    <%= render 'devise/shared/links' %>
   </div>
 </div>

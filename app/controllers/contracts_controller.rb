@@ -4,7 +4,7 @@ class ContractsController < ApplicationController
 
   def index
     @contractor_contracts = Contract.where(contractor_id: current_user.id).where.not(contractor_status: 'contract_cancel', contractor_status: 'contract_end')
-    @contractee_contracts = Contract.where(contractee_id: current_user.id).where.not(contractee_status: 'contract_cancel', contractee_status: 'contract_end')
+    @contractee_contracts = Contract.where(contractee_id: current_user.id).where(contractee_status: 'fulfillment', contractee_status: 'contract_finish')
   end
 
   def confirm
@@ -29,7 +29,7 @@ class ContractsController < ApplicationController
   def update
     contract = Contract.find(params[:id])
     #契約者が契約終了押したら
-    if current_user.id == contract.contractor.id
+    if contract.contractor_id == current_user.id
       contract.update(contractor_status: 'contract_finish')
       if contract.contractee_status == 'contract_finish' && contract.contractor_status == 'contract_finish'
         contract.update(contractor_status: 'contract_end', contractee_status: 'contract_end')
@@ -37,6 +37,7 @@ class ContractsController < ApplicationController
       else
         flash[:notice] = '両者の契約終了を持ちまして契約満了となりますので、お待ちください。'
       end
+      redirect_to items_path
     else  #請負側が終了を押した時
       case contract.contractee_status
       when 'standing'
@@ -50,9 +51,9 @@ class ContractsController < ApplicationController
         else
           flash[:notice] = '両者の契約終了を持ちまして契約満了となりますので、お待ちください。'
         end
+        redirect_to items_path
       end
     end
-    redirect_to items_path
   end
 
   def cancel
