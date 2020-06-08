@@ -1,42 +1,45 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-offset-1 col-xs-10">
-			<h3 class="text-center">プロフィール編集</h3>
-			<%= form_for(@user, url: user_path ) do |f| %>
+<div class='container'>
+	<div class='row'>
+		<div class='col-xs-offset-1 col-xs-10'>
+			<h3 class='text-center'>プロフィール編集</h3>
+			<div class='user-edit'>
+				<%= form_for(@user, url: user_path ) do |f| %>
 
-				<%= render 'layouts/error_messages', model: f.object %>
-				
-				<div class="col-sm-5">
-					<%= attachment_image_tag @user, :image, size:"300x300", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
-					<%= f.attachment_field :image %>
-				</div>
-
-				<div class="form-horizontal col-sm-offset-1 col-sm-6">
-					<div class="form-group">
-						<%= f.label :name, "名前", class: 'col-sm-4' %>
-						<div class="col-sm-8">
-							<%= f.text_field :name, autofocus: true, class: 'form-control' %>
-						</div>
+					<%= render 'layouts/error_messages', model: f.object %>
+					
+					<div class='col-sm-5 text-center'>
+						<%= attachment_image_tag @user, :image, size:'200x200', class: 'img-circle profile-thumb', fallback: 'no_image.jpg' %>
+						<%= f.attachment_field :image %>
 					</div>
 
-					<div class="form-group">
-						<%= f.label :email, "e-mail", class: 'col-sm-4' %>
-						<div class="col-sm-8">
-							<%= f.text_field :email, autofocus: true, class: 'form-control' %>
+					<div class='form-horizontal col-sm-offset-1 col-sm-6'>
+						<div class='form-group'>
+							<%= f.label :name, '名前', class: 'col-sm-4 edit-name' %>
+							<div class='col-sm-8'>
+								<%= f.text_field :name, autofocus: true, class: 'form-control' %>
+							</div>
+						</div>
+
+						<div class='form-group'>
+							<%= f.label :email, 'e-mail', class: 'col-sm-4' %>
+							<div class='col-sm-8'>
+								<%= f.text_field :email, autofocus: true, class: 'form-control' %>
+							</div>
+						</div>
+
+						<div class='form-group'>
+							<%= f.label :introduction, '自己紹介', class: 'col-sm-4' %>
+							<div class='col-sm-8'>
+								<%= f.text_area :introduction, autofocus: true, class: 'form-control' %>
+							</div>
+						</div>
+						<div class='actions'>
+						<%= f.submit '変更を保存', class: 'button' %>
 						</div>
 					</div>
+				<% end %>
 
-					<div class="form-group">
-						<%= f.label :introduction, "自己紹介", class: 'col-sm-4' %>
-						<div class="col-sm-8">
-							<%= f.text_area :introduction, autofocus: true, class: 'form-control' %>
-						</div>
-					</div>
-
-					<%= f.submit "変更を保存", class: "btn btn-success col-sm-4 col-sm-offset-4" %>
-				</div>
-			<% end %>
-
+			</div>
 		</div><!--col-->
 	</div><!--row-->
 </div><!--container-->
