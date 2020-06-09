@@ -39,7 +39,7 @@
 
   				<div class='lesson-field'>
 	  				<div class='lesson-price'>
-	  					<p>金額：<%= @item.price %> 円　　<span class= 'badge badge-primary'><%= @item.is_continue %></span></p>
+	  					<p>金額：<%= @item.price %> 円　　<span class= 'badge badge-primary'><%= @item.is_continue == 'continue' ? '継続案件' : '単発案件' %></span></p>
 	  				</div>
 	  				 <div class='lesson-duration'>
 	  					<p>目安日数：<%= @item.duration %></p>
@@ -51,7 +51,14 @@
 							<% end %></p>
 	  				</div>
 	  				<div class='prefer-lesson-sex'>
-	  					<p>希望性別：<%= @item.prefer_sex %></p>
+	  					<p>希望性別：
+	  						<% if @item.prefer_sex == 'fine' %>
+	  							どちらでも可
+	  						<% elsif @item.prefer_sex == 'male'%>
+	  							男性
+	  						<% elsif @item.prefer_sex == 'female'%>
+	  							女性
+	  						<% end %></p>
 	  				</div>
 				</div>
 

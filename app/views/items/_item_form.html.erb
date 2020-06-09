@@ -25,9 +25,9 @@
 			<div class='field'>
 				<p class='field_title'>案件種別</p>
 				<%= f.radio_button :is_continue, :continue , checked: :true %>
-				<%= f.label :is_continue, '継続案件', {value: :true, style: 'display: inline-block'} %>
+				<%= f.label :is_continue, '継続案件', {value: :continue, style: 'display: inline-block'} %>
 				<%= f.radio_button :is_continue, :single %>
-				<%= f.label :is_continue, '単発案件', {value: :false, style: 'display: inline-block'} %>
+				<%= f.label :is_continue, '単発案件', {value: :single, style: 'display: inline-block'} %>
 			</div>
 
 			<div class='field'>

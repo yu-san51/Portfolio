@@ -10,9 +10,34 @@
 
 				<div class='form'>
 					<%= render 'contracts/contract_content', item: @contract.item %>
-						<div class='actions'>
-							<%= link_to '契約内容を終了しました', contract_path(@contract.id), method: :patch, 'data-confirm' => '本当に契約を終了しますか？', class: 'button' %>
-						</div>
+
+					<div class='field'>
+						<p class='field_title'>申請者名</p>
+						<% if @contract.contractor.present? %>
+							<p class='field_show'><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><%= link_to "#{@contract.contractor.name}", user_path(@contract.contractor.id) %> さん</p>
+						<% else %>
+							<p class='field_show'>退会済みユーザー</p>
+						<% end %>
+					</div>
+
+					<% if current_user.id == @contract.contractor_id %> <!--ログインしているのが契約申請者だった時-->
+						<% if @contract.contractor_status == 'contract_finish' %>
+							<p>すでに終了ボタンは押されています。相手のリアクションをお待ちください。</p>
+						<% else %>
+							<div class='contract-actions'>
+							<%= link_to '契約内容を終了しました', contract_path(@contract.id), method: :patch, 'data-confirm' => '本当に契約を終了しますか？', class: 'contract-button' %>
+							</div>
+						<% end %>
+					<% else %>  <!--ログインしているのが請負者だった場合-->
+						<% if @contract.contractee_status == 'contract_finish' %>
+							<p>すでに終了ボタンは押されています。相手のリアクションをお待ちください。</p>
+						<% else %>
+							<div class='contract-actions'>
+							<%= link_to '契約内容を終了しました', contract_path(@contract.id), method: :patch, 'data-confirm' => '本当に契約を終了しますか？', class: 'contract-button' %>
+							</div>
+						<% end %>
+
+					<% end %>
 
 					<div class='form-footer'>
 					</div>

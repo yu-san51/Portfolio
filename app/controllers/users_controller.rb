@@ -21,9 +21,18 @@ class UsersController < ApplicationController
 	end
 
 	def destroy   #paranoia destroy
-		@user = User.find(params[:id])
-		@user.destroy
-		redirect_to root_path
+		if Contract.where(contractor_id: current_user.id).where(contractor_status: 'spplying', contractor_status: 'fulfillment', contractor_status: 'contract_finish') || Contract.where(contractee_id: current_user.id).where(contractee_status: 'fulfillment', contractee_status: 'contract_finish')
+			flash[:notice] = '契約進行中にある時は退会できません。'
+			redirect_to user_path(current_user.id)
+		else
+			@user = User.find(params[:id])
+		#案件を持っていた時は受付停止に
+			@user.items.each do |item|
+				item.close!
+			end
+			@user.destroy
+			redirect_to root_path
+		end
 	end
 
 	def items
@@ -40,7 +49,7 @@ class UsersController < ApplicationController
 			when 'fulfillment'
 				@message = '申請は承認されました。契約が終了したときは、詳細ページから終了ボタンを押してください。'
 			when 'contract_finish'
-				@message = '契約は終了されました。詳細ページから終了ください。'
+				@message = '契約は相手によって終了されました。契約内容が終了している場合は詳細ページから終了ください。'
 			when 'contract_end'
 				@message = '契約は満了となりました。'
 			when 'contract_cancel'
