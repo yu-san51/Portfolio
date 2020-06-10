@@ -17,13 +17,18 @@ class ContractsController < ApplicationController
   end
 
   def create
-    @contract = Contract.new(contract_params)
-    @contract.contractor_id = current_user.id
-    @contract.save
-    item = Item.find(params[:contract][:item_id])
-    item.contracted!
-    flash[:notice] = '契約申請しました。案件制作者様のご連絡をお待ちください。'
-    redirect_to user_path(current_user.id)
+    if Contract.find_by(item_id: params[:item_id], contractor_id: current_user.id)
+      flash[:notice] = '一度キャンセルされた案件に応募することはできません。他の案件をお探しください。'
+      redirect_to items_path
+    else
+      @contract = Contract.new(contract_params)
+      @contract.contractor_id = current_user.id
+      @contract.save
+      item = Item.find(params[:contract][:item_id])
+      item.contracted!
+      flash[:notice] = '契約申請しました。案件制作者様のご連絡をお待ちください。'
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update

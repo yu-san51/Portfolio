@@ -27,7 +27,7 @@
     					<div class='card-body-option card-body-option-share'>
     						<span class= 'badge badge-primary'>
     						<%= item.is_continue == 'continue' ? '継続案件' : '単発案件' %></span><!--単発継続-->
-    						<span class= 'badge badge-primary'><%= item.user.sex %></span>
+    						<span class= 'badge badge-primary'><%= item.user.present? ? item.user.sex : '退会済みユーザー'%></span>
     					</div>
     				</div>
     				<div class='card-body-stars u-clearfix'>
