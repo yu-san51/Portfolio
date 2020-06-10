@@ -1,0 +1,46 @@
+
+	<!--item index-->
+<div class='contents'>
+	<% items.each do |item| %>
+		<% if item.user == current_user || item.active_status == 'open' %>
+			<div class='card u-clearfix'>
+				<div class='card-media'>
+					<div class='card-media-img'>
+						<%= attachment_image_tag item.user, :image, size:'100x135', fallback: 'no_image.jpg' %>
+					</div>
+					<% if item.user.present? %>
+						<%= link_to user_path(item.user.id) do %>
+							<div class='card-media-preview u-flex-center'><i class='fas fa-user'></i></div>
+						<% end %>
+						<span class='card-media-tag card-media-tag-orange'><%= item.user.name %></span>
+					<% else %>
+						<span class='card-media-tag card-media-tag-orange'>退会済みユーザー</span>
+					<% end %>
+				</div><!--card-media-->
+
+				<div class='card-body'>
+  					<h2 class='card-body-heading'><%= item.title %></h2>
+  					<div class='card-body-options'>
+    					<div class='card-body-option card-body-option-favorite'>
+    						<!-- お気に入り -->
+    					</div>
+    					<div class='card-body-option card-body-option-share'>
+    						<span class= 'badge badge-primary'>
+    						<%= item.is_continue == 'continue' ? '継続案件' : '単発案件' %></span><!--単発継続-->
+    						<span class= 'badge badge-primary'><%= item.user.present? ? item.user.sex : '退会済みユーザー'%></span>
+    					</div>
+    				</div>
+    				<div class='card-body-stars u-clearfix'>
+    					<%= item.body.truncate(100) %>
+  					</div>
+    				<%= link_to "#{item.price} 円", item_path(item.id), class: 'card-button card-button-cta' %>
+    				<%= link_to item_path(item.id), class: 'card-button card-button-link' do %>
+    					<span class='card-button-icon'>More info</span>
+    				<% end %>
+				</div><!--cardbody-->
+			</div><!--u-clearfix-->
+		<% end %><!--if-->
+	<% end %><!--each-->
+
+	<%= paginate @items %>
+</div>

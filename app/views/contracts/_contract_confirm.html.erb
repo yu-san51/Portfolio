@@ -1,0 +1,41 @@
+
+　　　<!-- 契約内容詳細 emailなし-->
+
+
+		<div class='field'>
+			<p class='field_title'>案件製作者</p>
+			<p class='field_show'><%= item.user.name %></p>
+		</div>
+
+		<div class='field'>
+			<p class='field_title'>案件名</p>
+			<p class='field_show'><%= item.title %></p>
+		</div>
+
+		<div class='field'>
+			<p class='field_title'>案件内容</p>
+			<p class='field_show'><%= item.body %></p>
+		</div>
+
+		<div class='field'>
+			<p class='field_title'>金額</p>
+			<p class='field_show'><%= item.price %> 円</p>
+		</div>
+
+		<div class='field'>
+			<p class='field_title'>案件種別</p>
+			<p class='field_show'><%= item.is_continue == 'continue' ? '継続案件' : '単発案件' %></p>
+		</div>
+
+		<div class='field'>
+			<p class='field_title'>目安日数</p>
+			<p class='field_show'><%= item.duration %></p>
+		</div>
+
+		<div class='field'>
+			<p class='field_title'>授業形態 (複数選択可)</p>
+			<% item.styles.each do |style| %>
+				<p class='field_show'><%= style.name %></p>
+			<% end %>
+
+		</div>

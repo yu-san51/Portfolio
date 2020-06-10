@@ -1,0 +1,31 @@
+<div class='container'>
+	<div class='row'>
+		<div class='col-xs-offset-1 col-xs-10'>
+			<%= render 'layouts/notifications' %>
+			<h3 class='text-center'>契約中案件一覧</h3>
+
+			<div class='row'>
+				<h4 class='text-center'>申請案件</h4>
+				<% if @contractor_contracts.count > 0 %>
+					<% @contractor_contracts.each do |contract| %>
+						<%= render 'contracts/contract_part_of_index', item: contract.item, contract: contract %>
+					<% end %>
+				<% else %>
+					<p class='text-center'>現在申請した契約はありません。</p>
+					<p class='text-center'>案件一覧から自分に合った案件を探してみましょう。</p>
+				<% end %>
+
+				<h4 class='text-center'>受付案件</h4>
+				<% if @contractee_contracts.count > 0 %>
+
+					<% @contractee_contracts.each do |contract| %>
+						<%= render 'contracts/contract_part_of_index', item: contract.item, contract: contract %>
+					<% end %>
+				<% else %>
+					<p class='text-center'>現在受付けた契約はありません。</p>
+					<p class='text-center'>案件作成から案件を作成しましょう。</p>
+				<% end %>
+			</div><!--row-->
+		</div><!--col-->
+	</div><!--row-->
+</div><!--container-->
