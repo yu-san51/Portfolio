@@ -3,15 +3,27 @@
 		<%= render 'layouts/notifications' %>
 		<div class='show-wrapper'>
 			<div class='user-sidebar'><!--提案者紹介-->
-				<%= link_to user_path(@item.user.id) do %>
+				<% if @item.user.present? %>
+					<%= link_to user_path(@item.user.id) do %>
+						<div class='card-media'>
+							<div class='card-media-showimg'>
+								<%= attachment_image_tag @item.user, :image,size: '145x135', fallback: ('no_image.jpg') %>
+							</div>
+							<span class='card-media-showtag card-media-tag-orange'><%= @item.user.sex %></span>
+						</div>
+						<div class='show-name'>
+							<%= link_to "#{@item.user.name}", user_path(@item.user) %>
+						</div>
+					<% end %>
+				<% else %>
 					<div class='card-media'>
 						<div class='card-media-showimg'>
 							<%= attachment_image_tag @item.user, :image,size: '145x135', fallback: ('no_image.jpg') %>
 						</div>
-						<span class='card-media-showtag card-media-tag-orange'><%= @item.user.sex %></span>
+						<span class='card-media-showtag card-media-tag-orange'>退会済みユーザー</span>
 					</div>
 					<div class='show-name'>
-						<%= link_to "#{@item.user.name}", user_path(@item.user) %>
+						<p>退会済みユーザー</p>
 					</div>
 				<% end %>
 			</div><!--sidebar-->
@@ -39,7 +51,7 @@
 
   				<div class='lesson-field'>
 	  				<div class='lesson-price'>
-	  					<p>金額：<%= @item.price %> 円　　<span class= 'badge badge-primary'><%= @item.is_continue %></span></p>
+	  					<p>金額：<%= @item.price %> 円　　<span class= 'badge badge-primary'><%= @item.is_continue == 'continue' ? '継続案件' : '単発案件' %></span></p>
 	  				</div>
 	  				 <div class='lesson-duration'>
 	  					<p>目安日数：<%= @item.duration %></p>
@@ -51,12 +63,19 @@
 							<% end %></p>
 	  				</div>
 	  				<div class='prefer-lesson-sex'>
-	  					<p>希望性別：<%= @item.prefer_sex %></p>
+	  					<p>希望性別：
+	  						<% if @item.prefer_sex == 'fine' %>
+	  							どちらでも可
+	  						<% elsif @item.prefer_sex == 'male'%>
+	  							男性
+	  						<% elsif @item.prefer_sex == 'female'%>
+	  							女性
+	  						<% end %></p>
 	  				</div>
 				</div>
 
 				<div class='actions'>
-					<% if user_signed_in? %>
+					<% if user_signed_in? && @item.user.present? %>
 						<% if @item.user == current_user %>
 							<%= link_to '案件の修正', edit_item_path(@item.id), class: 'card-button card-button-cta' %>
 							<%= link_to '案件の削除', item_path(@item.id), method: :delete, class: 'card-button card-button-dta' %>

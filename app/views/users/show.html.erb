@@ -16,7 +16,7 @@
         					<hr>
 
         					<% if @user == current_user %>
-        						<div class='role'><%= link_to 'お知らせ', notice_user_path(@user.id) %>
+        						<div class='role'><%= link_to 'ダッシュボード', notice_user_path(@user.id) %>
         						</div>
         						<div class='contact'><%= link_to '契約中の案件', contracts_path %>
         						</div>
@@ -53,8 +53,8 @@
 	        	</div><!--card-->
 	        </div><!--flip-->
 
-	        <div class='actions turn'>
-	        	<p class='button text-change'>自己紹介文へ</p>
+	        <div class='user-actions turn'>
+	        	<p class='user-button text-change'>自己紹介文へ</p>
 			</div>
 
 			<% if @user == current_user || user_signed_in? %>

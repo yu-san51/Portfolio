@@ -8,10 +8,14 @@
 					<div class='card-media-img'>
 						<%= attachment_image_tag item.user, :image, size:'100x135', fallback: 'no_image.jpg' %>
 					</div>
-					<%= link_to user_path(item.user.id) do %>
-						<div class='card-media-preview u-flex-center'><i class='fas fa-user'></i></div>
+					<% if item.user.present? %>
+						<%= link_to user_path(item.user.id) do %>
+							<div class='card-media-preview u-flex-center'><i class='fas fa-user'></i></div>
+						<% end %>
+						<span class='card-media-tag card-media-tag-orange'><%= item.user.name %></span>
+					<% else %>
+						<span class='card-media-tag card-media-tag-orange'>退会済みユーザー</span>
 					<% end %>
-					<span class='card-media-tag card-media-tag-orange'><%= item.user.name %></span>
 				</div><!--card-media-->
 
 				<div class='card-body'>
@@ -22,8 +26,8 @@
     					</div>
     					<div class='card-body-option card-body-option-share'>
     						<span class= 'badge badge-primary'>
-    						<%= item.is_continue %></span><!--単発継続-->
-    						<span class= 'badge badge-primary'><%= item.user.sex %></span>
+    						<%= item.is_continue == 'continue' ? '継続案件' : '単発案件' %></span><!--単発継続-->
+    						<span class= 'badge badge-primary'><%= item.user.present? ? item.user.sex : '退会済みユーザー'%></span>
     					</div>
     				</div>
     				<div class='card-body-stars u-clearfix'>

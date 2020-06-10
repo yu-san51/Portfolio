@@ -9,7 +9,7 @@
 					<%= render 'contracts/contract_confirm', item: @contract.item %>
 					<div class='field'>
 						<p class='field_title'>申請者名</p>
-						<p class='field_show'><%= link_to "#{@contract.contractor.name}", user_path(@contract.contractor.id) %> さん</p>
+						<p class='field_show'><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><%= link_to "#{@contract.contractor.name}", user_path(@contract.contractor.id) %> さん</p>
 					</div>
 
 					<div class='actions'>
