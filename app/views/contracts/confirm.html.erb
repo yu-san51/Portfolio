@@ -13,10 +13,10 @@
 					</div>
 
 					<div class='actions'>
-						<%= link_to 'この条件で契約する', contract_path(@contract.id), method: :patch, class: 'card-button card-button-dta', 'data-confirm' => '本当に申請を受けますか？' %>
+						<%= link_to 'この条件で契約する', contract_path(@contract.id), method: :patch, class: 'card-button card-button-dta ok-button', 'data-confirm' => '本当に申請を受けますか？' %>
 					</div>
-					<div class='actions'>
-						<%= link_to '契約しない', cancel_contract_path(@contract.id), method: :patch, class: 'card-button card-button-cta', 'data-confirm' => '本当に契約を断りますか？' %>
+					<div class='actions text-center'>
+						<%= link_to '契約しない', cancel_contract_path(@contract.id), method: :patch, class: 'card-button card-button-cta cancel-button', 'data-confirm' => '本当に契約を断りますか？' %>
 					</div>
 
 					<div class='form-footer'>

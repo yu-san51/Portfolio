@@ -69,7 +69,10 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari'
 gem 'paranoia'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
+#デプロイ用gem
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

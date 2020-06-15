@@ -80,10 +80,15 @@
 							<%= link_to '案件の修正', edit_item_path(@item.id), class: 'card-button card-button-cta' %>
 							<%= link_to '案件の削除', item_path(@item.id), method: :delete, class: 'card-button card-button-dta' %>
 						<% end %>
+					<% end %>
+				</div>
+
+				<div class='actions'>
+					<% if user_signed_in? && @item.user.present? %>
 
 						<!-- チャットルームを作る/	契約画面へ -->
 						<% if @item.active_status == 'open' %>
-							<%= link_to 'コメント', message_path(@item.id), class: 'card-button card-button-cta' %>
+							<%= link_to 'コメント', message_path(@item.id), class: 'card-button card-button-cta comment-button' %>
 							<% if @item.user != current_user %>
 								<%= link_to '契約申請画面へ', new_item_contract_path(@item.id), class: 'card-button card-button-dta' %>
 							<% end %>
