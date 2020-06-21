@@ -77,3 +77,5 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+#s3とrefileの連携
+gem "refile-s3"
