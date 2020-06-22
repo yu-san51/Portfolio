@@ -38,8 +38,8 @@
             <% else %><!--ログイン前-->
               <ul class="nav navbar-nav">
                 <li><%= link_to "About", home_about_path %></li>
-                <li><%= link_to "Login", user_session_path %></li>
                 <li><%= link_to "案件一覧", items_path %></li>
+                <li><%= link_to "Login", user_session_path %></li>
               </ul>
               <p class="navbar-text navbar-right"><%= link_to "ようこそ  新規登録はこちら", new_user_registration_path %></p>
             <% end %>

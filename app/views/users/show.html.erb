@@ -16,7 +16,7 @@
         					<hr>
 
         					<% if @user == current_user %>
-        						<div class='role'><%= link_to 'ダッシュボード', notice_user_path(@user.id) %>
+        						<div class='role'><%= link_to 'ダッシュボード　', notice_user_path(@user.id) %><span class='bord-check'>← check!!</span>
         						</div>
         						<div class='contact'><%= link_to '契約中の案件', contracts_path %>
         						</div>
