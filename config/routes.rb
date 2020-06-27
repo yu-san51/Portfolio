@@ -17,8 +17,11 @@ Rails.application.routes.draw do
       get 'confirm'
       get 'deal'
       patch 'cancel'
+      post 'review', only: [:create]
     end
   end
+
+  resources :reviews, only: [:index]
 
   get 'message/:id' => 'messages#show', as: 'message'
   resources :messages, only: [:create]
