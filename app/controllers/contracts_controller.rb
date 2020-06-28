@@ -32,14 +32,17 @@ class ContractsController < ApplicationController
   end
 
   def update
-    contract = Contract.find(params[:id])
+    @contract = Contract.find(params[:id])
     #契約者が契約終了押したら
-    if contract.contractor_id == current_user.id
-      case contract.contractor_status
+    if @contract.contractor_id == current_user.id
+      case @contract.contractor_status
       when 'fulfillment'
-        contract.update(contractor_status: 'contract_finish')
-        if contract.contractee_status == 'contract_finish' && contract.contractor_status == 'contract_finish'
-          contract.update(contractor_status: 'contract_end', contractee_status: 'contract_end')
+        review = @contract.reviews.new(review_params)
+        review.user_id = current_user.id
+        review.save
+        @contract.update(contractor_status: 'contract_finish')
+        if @contract.contractee_status == 'contract_finish' && @contract.contractor_status == 'contract_finish'
+          @contract.update(contractor_status: 'contract_end', contractee_status: 'contract_end')
           flash[:notice] = '契約がすべて終了いたしました。またのご利用お待ちしております。'
         else
           flash[:notice] = '両者の契約終了を持ちまして契約満了となりますので、お待ちください。'
@@ -51,14 +54,17 @@ class ContractsController < ApplicationController
       end
 
     else  #請負側が終了を押した時
-      case contract.contractee_status
+      case @contract.contractee_status
       when 'standing'
-        contract.update(contractor_status: 'fulfillment', contractee_status: 'fulfillment')
-        redirect_to deal_contract_path(contract.id)
+        @contract.update(contractor_status: 'fulfillment', contractee_status: 'fulfillment')
+        redirect_to deal_contract_path(@contract.id)
       when 'fulfillment'
-        contract.update(contractee_status: 'contract_finish')
-        if contract.contractee_status == 'contract_finish' && contract.contractor_status == 'contract_finish'
-           contract.update(contractor_status: 'contract_end', contractee_status: 'contract_end')
+        review = @contract.reviews.new(review_params)
+        review.user_id = current_user.id
+        review.save
+        @contract.update(contractee_status: 'contract_finish')
+        if @contract.contractee_status == 'contract_finish' && @contract.contractor_status == 'contract_finish'
+           @contract.update(contractor_status: 'contract_end', contractee_status: 'contract_end')
            flash[:notice] = '契約がすべて終了いたしました。またのご利用お待ちしております。'
         else
           flash[:notice] = '両者の契約終了を持ちまして契約満了となりますので、お待ちください。'
@@ -81,7 +87,7 @@ class ContractsController < ApplicationController
 
   def show
     @contract = Contract.find(params[:id])
-
+    @contract.reviews.build
   end
 
   def deal
@@ -103,7 +109,8 @@ class ContractsController < ApplicationController
      params.require(:contract).permit(:item_id, :contract_price, :contractee_id)
    end
 
-   def status_params
-     params.require(:contract).permit(:contractor_status, :contractee_status)
+   def review_params
+     params.require(:review).permit(:rate, :comment)
    end
+
 end
