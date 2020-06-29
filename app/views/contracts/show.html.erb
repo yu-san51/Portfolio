@@ -28,10 +28,9 @@
 							</div>
 						<% else %>
 								<!-- 評価 -->
-							<%= form_for @contract do |f| %>
+							<%= form_with(url: contract_path(@contract.id), local:true, method: :patch) do |f| %>
 								<%= f.fields_for :reviews do |review| %>
 									<div class="field">
-										<%= render 'layouts/error_messages', model: f.object %>
 										<!--☆評価-->
 										<div id="star">
 											<%= review.label :rate,'評価 ', class:'field_title' %>
@@ -73,10 +72,9 @@
 							</div>
 						<% else %>
 									<!-- 評価 -->
-							<%= form_for @contract do |f| %>
+							<%= form_with(url: contract_path(@contract.id), local:true, method: :patch) do |f| %>
 								<%= f.fields_for :reviews do |review| %>
 									<div class="field">
-										<%= render 'layouts/error_messages', model: f.object %>
 										<!--☆評価-->
 										<div id="star">
 											<%= review.label :rate,'評価 ', class:'field_title' %>
