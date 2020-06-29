@@ -28,40 +28,7 @@
 							</div>
 						<% else %>
 								<!-- 評価 -->
-							<%= form_with(url: contract_path(@contract.id), local:true, method: :patch) do |f| %>
-								<%= f.fields_for :reviews do |review| %>
-									<div class="field">
-										<!--☆評価-->
-										<div id="star">
-											<%= review.label :rate,'評価 ', class:'field_title' %>
-											<%= review.hidden_field :rate, id: :review_star %>
-										</div>
-
-										<!-- 評価javascript -->
-										<script>
-										$('#star').raty({
-										size     : 36,
-										starOff:  '<%= asset_path('star-off.png') %>',
-										starOn : '<%= asset_path('star-on.png') %>',
-										starHalf: '<%= asset_path('star-half.png') %>',
-										scoreName: 'review[rate]',
-										half: true,
-										});
-										</script>
-		    						</div><!--評価field-->
-									<div class="field">
-										<!--コメント-->
-										<div>
-	    									<%= review.label :comment, 'コメント ', class:'field_title' %>
-	    									<br />
-	    									<%= review.text_area :comment, class: 'form-control', rows: '3', name: 'review[comment]', placeholder:'良かった点や気になった点があればお書きください' %>
-	    								</div>
-	    							</div>
-									<div class='actions'>
-										<%= f.submit '契約内容を終了しました', 'data-confirm' => '本当に契約を終了しますか？', class: 'button' %>
-									</div>
-    							<% end %><!--review-->
-    						<% end %><!--@contract-->
+							<%= render 'reviews/review_form', contract: @contract %>
 						<% end %><!--status.finish?-->
 
 					<% else %>  <!--ログインしているのが請負者だった場合-->
@@ -71,41 +38,8 @@
 								<%= link_to 'マイページへ', user_path(current_user.id), class: 'btn btn-default' %>
 							</div>
 						<% else %>
-									<!-- 評価 -->
-							<%= form_with(url: contract_path(@contract.id), local:true, method: :patch) do |f| %>
-								<%= f.fields_for :reviews do |review| %>
-									<div class="field">
-										<!--☆評価-->
-										<div id="star">
-											<%= review.label :rate,'評価 ', class:'field_title' %>
-											<%= review.hidden_field :rate, id: :review_star %>
-										</div>
-
-										<!-- 評価javascript -->
-										<script>
-										$('#star').raty({
-										size     : 36,
-										starOff:  '<%= asset_path('star-off.png') %>',
-										starOn : '<%= asset_path('star-on.png') %>',
-										starHalf: '<%= asset_path('star-half.png') %>',
-										scoreName: 'review[rate]',
-										half: true,
-										});
-										</script>
-		    						</div><!--評価field-->
-									<div class="field">
-										<!--コメント-->
-										<div>
-											<%= review.label :comment, 'コメント ', class:'field_title' %>
-											<br />
-											<%= review.text_area :comment, class: 'form-control', rows: '3', name: 'review[comment]', placeholder:'良かった点や気になった点があればお書きください' %>
-										</div>
-									</div>
-									<div class='actions'>
-										<%= f.submit '契約内容を終了しました', 'data-confirm' => '本当に契約を終了しますか？', class: 'button' %>
-									</div>
-								<% end %><!--review-->
-							<% end %><!--@contract-->
+								<!-- 評価 -->
+							<%= render 'reviews/review_form', contract: @contract %>
 						<% end %><!--contractee-finish?-->
 					<% end %><!--contractor?-->
 
