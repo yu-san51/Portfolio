@@ -12,7 +12,25 @@
   				<div class='card'>
     				<div class='face front'>
       					<div class='details'>
-        					<div><%= @user.name %></div>
+        					<div><%= @user.name %>
+        					評価：<%= @user.contract.reviews.count %> 件
+	        						<div id="star-rate-#{@user.id}">
+	        							
+	        						</div>
+	        						 <!--星評価-->
+									<script>
+									$('#star-rate-<%= @user.id %>').raty({
+									size: 36,
+									starOff:  '<%= asset_path('star-off.png') %>',
+									starOn : '<%= asset_path('star-on.png') %>',
+									starHalf: '<%= asset_path('star-half.png') %>',
+									half: true,
+									readOnly: true,
+									score: '<%= @user.contract.reviews.average(:rate).to_f.round(1) %>',
+									});
+									</script>
+									<!--/星評価-->
+	        					</div>
         					<hr>
 
         					<% if @user == current_user %>
@@ -32,7 +50,23 @@
         						</div>
         						<div class='contact'><%= link_to "#{@user.name}さんの案件一覧（#{@user.items.count}）", items_user_path(@user.id) %>
         						</div>
-	        					<div class='contact'>
+	        					<div class='contact'>評価：<%= @user.contract.review.count %> 件
+	        						<div id="star-rate-#{@user.id}">
+	        							
+	        						</div>
+	        						 <!--星評価-->
+									<script>
+									$('#star-rate-<%= @user.id %>').raty({
+									size: 36,
+									starOff:  '<%= asset_path('star-off.png') %>',
+									starOn : '<%= asset_path('star-on.png') %>',
+									starHalf: '<%= asset_path('star-half.png') %>',
+									half: true,
+									readOnly: true,
+									score: '<%= @user.contract.reviews.average(:rate).to_f.round(1) %>',
+									});
+									</script>
+									<!--/星評価-->
 	        					</div>
 
 	        				<% end %>
