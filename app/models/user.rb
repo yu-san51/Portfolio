@@ -28,6 +28,4 @@ class User < ApplicationRecord
   enum sex: {man: 1, woman: 2}
   enum user_type: {teacher: 1, student: 2}
 
-
-
 end
