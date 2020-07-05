@@ -17,11 +17,13 @@
 					<% else %>
 						<span class='card-media-tag card-media-tag-orange'>退会済みユーザー</span>
 					<% end %>
-				</div><!--card-media-->
-				<div class='user-star'>
+
+					<div class='user-star'>
 					<span id="star-rate-<%= item.user.id %>"></span>
     				<span>(<%= Contract.contract_reviews(item.user.id).count %>)</span>
-				</div>
+					</div>
+				</div><!--card-media-->
+				
 
 				<div class='card-body'>
   					<h2 class='card-body-heading'><%= item.title %></h2>

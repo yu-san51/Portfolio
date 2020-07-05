@@ -52,15 +52,20 @@
 
 .card-media {
   float: left;
-  padding: 37px 0 25px 25px;
+  padding: 37px 0 25px 20px;
   position: relative;
   width: 145px;
+}
+
+.user-star {
+  clear: left;
 }
 
 .card-media-img {
   box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
   float: left;
   margin-top: -25px;
+  margin-bottom: 30px;
   position: relative;
 }
 
@@ -75,13 +80,13 @@
 .card-media-preview {
   background-color: #ebd983;
   border-radius: 50%;
-  bottom: 11px;
+  bottom: 55px;
   box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
   cursor: pointer;
   height: 30px;
   opacity: 0;
   position: absolute;
-  left: 60px;
+  left: 55px;
   transform: translateY(5px);
   transition: all 300ms ease-out;
   width: 30px;
@@ -112,11 +117,7 @@
   top: -10px;
 }
 
-.user-star {
-  position: absolute;
-  left: 230px;
-  top: 280px;
-}
+
 
 .card-media-showtag {
   border-radius: 2px;
