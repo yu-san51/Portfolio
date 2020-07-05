@@ -39,15 +39,21 @@ class ContractsController < ApplicationController
       when 'fulfillment'
         review = contract.reviews.new(review_params)
         review.user_id = current_user.id
-        review.save
-        contract.update(contractor_status: 'contract_finish')
-        if contract.contractee_status == 'contract_finish' && contract.contractor_status == 'contract_finish'
-          contract.update(contractor_status: 'contract_end', contractee_status: 'contract_end')
-          flash[:notice] = '契約がすべて終了いたしました。またのご利用お待ちしております。'
-        else
-          flash[:notice] = '両者の契約終了を持ちまして契約満了となりますので、お待ちください。'
+        if review.save
+          contract.update(contractor_status: 'contract_finish')
+          if contract.contractee_status == 'contract_finish' && contract.contractor_status == 'contract_finish'
+            contract.update(contractor_status: 'contract_end', contractee_status: 'contract_end')
+            flash[:notice] = '契約がすべて終了いたしました。またのご利用お待ちしております。'
+          else
+            flash[:notice] = '両者の契約終了を持ちまして契約満了となりますので、お待ちください。'
+          end
+          redirect_to items_path
+        else  #評価をしていなかったとき
+          @contract = contract
+          @contract.reviews.build
+          flash[:notice] = '☆の評価は0.5~5の間で必ず行ってください。'
+          render :show
         end
-        redirect_to items_path
       when 'contract_finish'
         flash[:notice] = 'すでに終了されています。相手のリアクションをお待ちください。'
         redirect_to items_path
