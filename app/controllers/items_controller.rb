@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @review_count = Contract.contract_reviews(@item.user.id).count
+    @review_average = Contract.contract_average_rate(@item.user.id)
   end
 
   def new

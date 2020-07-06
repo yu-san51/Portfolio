@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :contractee_relationships, class_name: 'Contract' ,foreign_key: 'contractee_id'
   has_many :contractees, through: :contractee_relationships
 
+  has_many :reviews
+
 
   attachment :image  #refile
   acts_as_paranoid   #paranoia
@@ -27,7 +29,5 @@ class User < ApplicationRecord
 
   enum sex: {man: 1, woman: 2}
   enum user_type: {teacher: 1, student: 2}
-
-
 
 end
