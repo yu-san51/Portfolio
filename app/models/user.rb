@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :contractee_relationships, class_name: 'Contract' ,foreign_key: 'contractee_id'
   has_many :contractees, through: :contractee_relationships
 
+  has_many :reviews
+
 
   attachment :image  #refile
   acts_as_paranoid   #paranoia
