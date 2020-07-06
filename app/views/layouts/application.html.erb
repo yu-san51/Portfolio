@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/aa6a15dbff.js" crossorigin="anonymous"></script><!--font-awesome-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><!--img-preview-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -38,8 +39,8 @@
             <% else %><!--ログイン前-->
               <ul class="nav navbar-nav">
                 <li><%= link_to "About", home_about_path %></li>
-                <li><%= link_to "Login", user_session_path %></li>
                 <li><%= link_to "案件一覧", items_path %></li>
+                <li><%= link_to "Login", user_session_path %></li>
               </ul>
               <p class="navbar-text navbar-right"><%= link_to "ようこそ  新規登録はこちら", new_user_registration_path %></p>
             <% end %>

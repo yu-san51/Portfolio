@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_093119) do
+ActiveRecord::Schema.define(version: 2020_06_27_044712) do
 
   create_table "contracts", force: :cascade do |t|
     t.integer "contractor_id", null: false
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 2020_06_06_093119) do
     t.text "content"
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.float "rate", null: false
+    t.text "comment"
+    t.integer "contract_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: :cascade do |t|

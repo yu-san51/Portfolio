@@ -12,11 +12,16 @@
   				<div class='card'>
     				<div class='face front'>
       					<div class='details'>
-        					<div><%= @user.name %></div>
+        					<div><%= @user.name %>
+        						<% if @user == current_user %>
+	        						<span id="star-rate-<%= @user.id %>"></span>
+	        						<span>(<%= @review_count %>)</span>
+	        					<% end %>
+	        				</div>
         					<hr>
 
         					<% if @user == current_user %>
-        						<div class='role'><%= link_to 'ダッシュボード', notice_user_path(@user.id) %>
+        						<div class='role'><%= link_to 'ダッシュボード　', notice_user_path(@user.id) %><span class='bord-check'>← check!!</span>
         						</div>
         						<div class='contact'><%= link_to '契約中の案件', contracts_path %>
         						</div>
@@ -33,6 +38,8 @@
         						<div class='contact'><%= link_to "#{@user.name}さんの案件一覧（#{@user.items.count}）", items_user_path(@user.id) %>
         						</div>
 	        					<div class='contact'>
+	        						<span id="star-rate-<%= @user.id %>"></span>
+	        						<span>(<%= @review_count %>)</span>
 	        					</div>
 
 	        				<% end %>
@@ -57,7 +64,7 @@
 	        	<p class='user-button text-change'>自己紹介文へ</p>
 			</div>
 
-			<% if @user == current_user || user_signed_in? %>
+			<% if @user == current_user && user_signed_in? %>
 		        <div class='col-xs-offset-10 col-xs-2'>
 					<%= link_to '退会はこちらから', bye_confirm_user_path(current_user.id), class: 'btn btn-default' %>
 				</div>
@@ -66,6 +73,7 @@
 	</div>
 </div>
 
+<!-- 自己紹介  script -->
 <script>
 	$('.turn').click(function(){
 		if($('.flip').find('.card').hasClass('flipped')){
@@ -77,3 +85,5 @@
 		}
 	});
 </script>
+<!-- ☆平均　script -->
+<%= render 'reviews/review_average', user: @user, review_average: @review_average %>

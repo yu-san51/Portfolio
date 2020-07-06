@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@review_count = Contract.contract_reviews(@user.id).count
+		@review_average = Contract.contract_average_rate(@user.id)
 	end
 
 	def edit
@@ -21,7 +23,8 @@ class UsersController < ApplicationController
 	end
 
 	def destroy   #paranoia destroy
-		if Contract.where(contractor_id: current_user.id).where.not(contractor_status: 'end', contractor_status: 'contract_cancel') || Contract.where(contractee_id: current_user.id).where.not(contractee_status: 'contract_cancel', contractee_status: 'contract_finish')
+		#if　current_user.contractor_relationships.contractor_in_progress || current_user.contractee_relationships.contractee_in_progress
+		if Contract.where(contractor_id: current_user.id).where.not(contractor_status: 'contract_end', contractor_status: 'contract_cancel') || Contract.where(contractee_id: current_user.id).where.not(contractee_status: 'contract_cancel', contractee_status: 'contract_finish')
 			flash[:notice] = '契約進行中にある時は退会できません。契約内容を満了させてから退会してください。'
 			redirect_to user_path(current_user.id)
 		else
@@ -78,6 +81,12 @@ class UsersController < ApplicationController
 			@contractee_messages.push(contractee_message)
 		end
 	end
+
+	def reviews
+		@user = User.find(params[:id])
+		@reviews = Contract.contract_reviews(@user.id)
+	end
+
 
 	private
 	def user_params

@@ -2,28 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.contract-actions {
-  margin: 2em 0 0;
-  width: 100%;
-  text-align: center;
-  background: #f16272;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: background 0.3s ease-in-out;
-  font-size: 2em;
-  line-height: 50px;
-  border-radius: 2px;
-}
-
-.contract-button {
-  color: #fff;
-
-}
-
-.contract-actions:hover {
-  background: #ee3e52;
-}
 
 .actions .ok-button {
   width: 100%;

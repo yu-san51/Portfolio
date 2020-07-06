@@ -8,8 +8,25 @@
 					<%= render 'layouts/error_messages', model: f.object %>
 					
 					<div class='col-sm-5 text-center'>
-						<%= attachment_image_tag @user, :image, size:'200x200', class: 'img-circle profile-thumb', fallback: 'no_image.jpg' %>
-						<%= f.attachment_field :image %>
+						<%= attachment_image_tag @user, :image, size:'200x200', class: 'img-circle profile-thumb', fallback: 'no_image.jpg', id: 'img_prev' %>
+						<%= f.attachment_field :image, id: :user_img %>
+						<!--imgのプレビューscript-->
+						<script type="text/javascript">
+							$(function() {
+							 function readURL(input) {
+							   if (input.files && input.files[0]) {
+							     var reader = new FileReader();
+							     reader.onload = function (e) {
+							       $('#img_prev').attr('src', e.target.result);
+							     }
+							     reader.readAsDataURL(input.files[0]);
+							   }
+							 }
+							 $("#user_img").change(function(){
+							   readURL(this);
+							 });
+							});
+						</script>
 					</div>
 
 					<div class='form-horizontal col-sm-offset-1 col-sm-6'>

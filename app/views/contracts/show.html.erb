@@ -1,10 +1,11 @@
 <div class='container'>
 	<div class='row'>
 		<div class='col-xs-offset-1 col-xs-10'>
+			<%= render 'layouts/notifications' %>
 			<h3 class="text-center">契約詳細ページ</h3>
 			<div class='form-wrapper'>
 				<div class='form-header'>
-					<p class='field_title'>契約内容が終了したら、下部のボタンを押してください。</p>
+					<p class='field_title'>契約内容が終了したら、相手を評価して下部のボタンを押してください。</p>
 					<p class='field_title'>両者の契約内容終了を以って、契約の満了となります。</p>
 				</div>
 
@@ -23,21 +24,25 @@
 					<% if current_user.id == @contract.contractor_id %> <!--ログインしているのが契約申請者だった時-->
 						<% if @contract.contractor_status == 'contract_finish' %>
 							<p>すでに終了ボタンは押されています。相手のリアクションをお待ちください。</p>
-						<% else %>
-							<div class='contract-actions'>
-							<%= link_to '契約内容を終了しました', contract_path(@contract.id), method: :patch, 'data-confirm' => '本当に契約を終了しますか？', class: 'contract-button' %>
+							<div class="text-center">
+								<%= link_to 'マイページへ', user_path(current_user.id), class: 'btn btn-default' %>
 							</div>
-						<% end %>
+						<% else %>
+								<!-- 評価 -->
+							<%= render 'reviews/review_form', contract: @contract %>
+						<% end %><!--status.finish?-->
+
 					<% else %>  <!--ログインしているのが請負者だった場合-->
 						<% if @contract.contractee_status == 'contract_finish' %>
 							<p>すでに終了ボタンは押されています。相手のリアクションをお待ちください。</p>
-						<% else %>
-							<div class='contract-actions'>
-							<%= link_to '契約内容を終了しました', contract_path(@contract.id), method: :patch, 'data-confirm' => '本当に契約を終了しますか？', class: 'contract-button' %>
+							<div class="text-center">
+								<%= link_to 'マイページへ', user_path(current_user.id), class: 'btn btn-default' %>
 							</div>
-						<% end %>
-
-					<% end %>
+						<% else %>
+								<!-- 評価 -->
+							<%= render 'reviews/review_form', contract: @contract %>
+						<% end %><!--contractee-finish?-->
+					<% end %><!--contractor?-->
 
 					<div class='form-footer'>
 					</div>

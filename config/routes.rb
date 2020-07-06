@@ -18,16 +18,20 @@ Rails.application.routes.draw do
       get 'deal'
       patch 'cancel'
     end
+    resources :reviews, only: [:create]
   end
 
   get 'message/:id' => 'messages#show', as: 'message'
   resources :messages, only: [:create]
+
+  #get 'reviews/:id' => 'reviews#index', as: 'reviews'
 
   resources :users, only: [:show, :edit, :update, :destroy], shallow: true do
     member do
       get 'bye_confirm'
       get 'items'
       get 'notice'
+      get 'reviews'
     end
   end
 

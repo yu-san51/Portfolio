@@ -52,6 +52,15 @@
  padding-bottom:5px;
 }
 
+.bord-check{
+  animation: bord-checkAnime 1s infinite alternate;
+}
+
+@keyframes bord-checkAnime{
+  0% { color: #fff }
+  100% { color: red }
+}
+
 .contact{
  padding-top:10px;
  padding-bottom:10px;
