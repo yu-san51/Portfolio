@@ -14,8 +14,10 @@
       					<div class='details'>
         					<div><%= @user.name %>
         						<% if @user == current_user %>
-	        						<span id="star-rate-<%= @user.id %>"></span>
-	        						<span>(<%= @review_count %>)</span>
+	        						<%= link_to reviews_user_path(@user.id) do %>
+			        						<span id="star-rate-<%= @user.id %>"></span>
+			        						<span>(<%= @review_count %>)</span>
+		        					<% end %>
 	        					<% end %>
 	        				</div>
         					<hr>
@@ -38,8 +40,10 @@
         						<div class='contact'><%= link_to "#{@user.name}さんの案件一覧（#{@user.items.count}）", items_user_path(@user.id) %>
         						</div>
 	        					<div class='contact'>
-	        						<span id="star-rate-<%= @user.id %>"></span>
-	        						<span>(<%= @review_count %>)</span>
+	        						<%= link_to reviews_user_path(@user.id) do %>
+		        						<span id="star-rate-<%= @user.id %>"></span>
+		        						<span>(<%= @review_count %>)</span>
+		        					<% end %>
 	        					</div>
 
 	        				<% end %>
