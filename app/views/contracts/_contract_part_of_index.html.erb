@@ -8,6 +8,13 @@
 					<div class='card-media-preview u-flex-center'><i class='fas fa-user'></i></div>
 				<% end %>
 			<span class='card-media-tag card-media-tag-orange'><%= item.user.name %></span>
+
+			<%= link_to reviews_user_path(item.user.id) do %>
+				<div class='user-star'>
+					<span class="star-rate-<%= item.user.id %>"></span>
+					<span>(<%= Contract.contract_reviews(item.user.id).count %>)</span>
+				</div>
+			<% end %>
 		</div><!--card-media-->
 
 		<div class='card-body'>
@@ -30,3 +37,6 @@
 		</div><!--cardbody-->
 	</div><!--u-clearfix-->
 </div>
+
+<!-- ☆平均　script -->
+<%= render 'reviews/review_average', user: item.user, review_average: Contract.contract_average_rate(item.user.id) %>
