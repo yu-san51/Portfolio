@@ -18,7 +18,9 @@ class Contract < ApplicationRecord
 
 	# userに宛てられたreviewをとってくる
 	def self.contract_reviews(id)
-    	where(contractor_id: id).or(where(contractee_id: id)).flat_map(&:reviews)
+    	#where(contractor_id: id).or(where(contractee_id: id)).flat_map(&:reviews)
+    	contracts = self.where(contractor_id: id).or(self.where(contractee_id: id))
+    	Review.where(contract_id: contracts).where.not(user_id: id)
     end
 
 	def self.contract_average_rate(id)

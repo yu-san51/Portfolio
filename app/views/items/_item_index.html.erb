@@ -18,10 +18,12 @@
 						<span class='card-media-tag card-media-tag-orange'>退会済みユーザー</span>
 					<% end %>
 
-					<div class='user-star'>
-					<span id="star-rate-<%= item.user.id %>"></span>
-    				<span>(<%= Contract.contract_reviews(item.user.id).count %>)</span>
-					</div>
+					<%= link_to reviews_user_path(item.user.id) do %>
+						<div class='user-star'>
+							<span id="star-rate-<%= item.user.id %>"></span>
+    						<span>(<%= Contract.contract_reviews(item.user.id).count %>)</span>
+						</div>
+					<% end %>
 				</div><!--card-media-->
 				
 

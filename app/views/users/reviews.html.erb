@@ -5,41 +5,47 @@
 				<h3 class='text-center'><%= @user.name %>さんの評価一覧</h3>
 			</div>
 			<div class='user-reviews'>
-				<% @reviews.each do |review| %>
-					<div class="message">
-						
-						<div class="icon-left">
-							<%= attachment_image_tag review.user, :image, fallback: 'no_image.jpg' %>
-							<div class="message_name">
-								<%= review.user.name %>
+				<% if @reviews.count > 0 %>
+					<% @reviews.each do |review| %>
+						<div class="message">
+							
+							<div class="icon-left">
+								<%= attachment_image_tag review.user, :image, fallback: 'no_image.jpg' %>
+								<div class="message_name">
+									<%= review.user.name %>
+								</div>
 							</div>
+							<div class='balloon'>
+								<div id="star-rate-<%= review.id %>" class='review-star'></div>
+		     					<div class='serif-left'>
+		     						<p class='review-comment'>
+										<%= review.comment %>
+									</p>
+									<p class='review-item'>
+										案件名 ｜ <%= review.contract.item.title %>
+									</p>
+								</div>
+							</div><!--balloon-->
 						</div>
-						<div class='balloon'>
-							<div id="star-rate-<%= review.id %>" class='review-star'></div>
-	     					<div class='serif-left'>
-	     						<p class='review-comment'>
-									<%= review.comment %>
-								</p>
-								<p class='review-item'>
-									案件名 ｜ <%= review.contract.item.title %>
-								</p>
-							</div>
-						</div><!--balloon-->
-					</div>
-				<!-- ☆評価query -->
-					<script>
-						$(document).on('turbolinks:load', function(){
-							$('#star-rate-<%= review.id %>').raty({
-							size: 36,
-							starOff:  '<%= asset_path('star-off.png') %>',
-							starOn : '<%= asset_path('star-on.png') %>',
-							starHalf: '<%= asset_path('star-half.png') %>',
-							half: true,
-							readOnly: true,
-							score: '<%= review.rate %>',
-							});
-						})
-					</script>
+					<!-- ☆評価query -->
+						<script>
+							$(document).on('turbolinks:load', function(){
+								$('#star-rate-<%= review.id %>').raty({
+								size: 36,
+								starOff:  '<%= asset_path('star-off.png') %>',
+								starOn : '<%= asset_path('star-on.png') %>',
+								starHalf: '<%= asset_path('star-half.png') %>',
+								half: true,
+								readOnly: true,
+								score: '<%= review.rate %>',
+								});
+							})
+						</script>
+					<% end %>
+				<% else %>
+					<p class='text-center'>まだ評価はありません。</p>
+					<p class='text-center'>評価を受けて実績が上がると契約確率もあがります。</p>
+					<p class='text-center'>案件を作成しましょう！</p>
 				<% end %>
 			</div>
 		</div><!--wrapper-->
