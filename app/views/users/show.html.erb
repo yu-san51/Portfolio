@@ -15,7 +15,7 @@
         					<div><%= @user.name %>
         						<% if @user == current_user %>
 	        						<%= link_to reviews_user_path(@user.id) do %>
-			        						<span id="star-rate-<%= @user.id %>"></span>
+			        						<span class="star-rate-<%= @user.id %>"></span>
 			        						<span>(<%= @review_count %>)</span>
 		        					<% end %>
 	        					<% end %>

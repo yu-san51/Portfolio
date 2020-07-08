@@ -20,7 +20,7 @@
 
 					<%= link_to reviews_user_path(item.user.id) do %>
 						<div class='user-star'>
-							<span id="star-rate-<%= item.user.id %>"></span>
+							<span class="star-rate-<%= item.user.id %>"></span>
     						<span>(<%= Contract.contract_reviews(item.user.id).count %>)</span>
 						</div>
 					<% end %>
@@ -51,7 +51,7 @@
 		<% end %><!--if-->
 
 		<!-- ☆平均　script -->
-		<%= render 'reviews/review_average', user: item.user, review_average: Contract.contract_average_rate(item.user.id)%>
+		<%= render 'reviews/review_average', user: item.user, review_average: Contract.contract_average_rate(item.user.id) %>
 	<% end %><!--each-->
 
 	<%= paginate @items %>

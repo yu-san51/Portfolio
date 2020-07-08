@@ -1,7 +1,7 @@
 	 <!--平均星評価-->
 	<script>
 	$(document).on('turbolinks:load', function(){
-		$('#star-rate-<%= user.id %>').raty({
+		$('.star-rate-<%= user.id %>').raty({
 		size: 36,
 		starOff:  '<%= asset_path('star-off.png') %>',
 		starOn : '<%= asset_path('star-on.png') %>',
